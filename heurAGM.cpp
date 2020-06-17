@@ -1,8 +1,5 @@
 #include "funciones.h"
 
-using lista_adyacencia = vector<vector<int>>;
-using grafo = vector<vector<int>>;
-
 //merge sort basado en el peso de la aristas
 void merge_sort(vector<arista>& v,int v_1, int v_2){ //v es el vector, v_1 indice inclusive bajo, v_2 indice exclusivo alto
 	if(v.size() == 1){

@@ -3,6 +3,8 @@
 
 #include "vector"
 using namespace std;
+using lista_adyacencia = vector<vector<int>>;
+using grafo = vector<vector<int>>;
 
 struct arista{ //representa una arista
     int inicio;
@@ -62,6 +64,12 @@ void union_find::unir(int x, int y){
 }
 
 
+void merge_sort(vector<arista>& v,int v_1, int v_2);
+vector<arista> sort_aristas(grafo g);
+vector<arista> kruskal(grafo g);
+void dfs_recu(vector<arista> t, vector<int>& orden, int padre, int& nro_orden);
+vector<int> dfs(vector<arista> t);
+vector<int> heurAG(grafo g);
 
 vector<int> insercion(int& l);
 arista elegir(vector<bool> usados);
