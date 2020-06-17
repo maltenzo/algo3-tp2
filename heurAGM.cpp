@@ -13,7 +13,7 @@ arista arista(int i, int f, int p){ //iniciador de una arista
 	e.inicio = i;
 	e.fin = f;
 	e.peso = p
-	return p;
+	return e;
 }
 
 class union_find{ //clase creada para krustal eficiente
@@ -134,11 +134,10 @@ vector<int> heurAG(grafo g){
 	vector<int> orden = dfs(t);        \\Recorro por dfs, para saber los ordenes
 	vector<int> res(g.size(), 0);      \\ inicializo la resolución
 	res[0] = g.size();				   \\ la cantidad de vértices es siempre n
-	res[2] = 1;                        \\el primer vertice siempre es "1" 
+	res[2] = 1;                        \\el primer vertice siempre es "1"
 	for(int i = 1; i<orden.size(); i++){
 		res[i+2] = orden[i]+1;           \\ Agrego el vértice i de orden
-		res[2]   = G[orden[i-1]][orden[i]]; \\Agrego el peso de la arista (V_i-1,V_i) 
+		res[2]   = G[orden[i-1]][orden[i]]; \\Agrego el peso de la arista (V_i-1,V_i)
 	}
 	return res;
 }
-
