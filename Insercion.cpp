@@ -77,7 +77,7 @@ arista mas_lejana(vector<bool> usados){
     return e.fin; //el j que me quedo es el elegido
 }
 
-vector<int> insertar(vector<vector<int>> g, vector<int> ciclo, int& l, int nodo){
+vector<int> insertar(vector<int> ciclo, int& l, int nodo){
     int l_min = infinito;
     int inicio = 0;
     int fin = 0;
