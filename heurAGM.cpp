@@ -1,4 +1,3 @@
-#include "funciones.h"
 
 using lista_adyacencia = vector<vector<int>>
 using grafo = vector<vector<int>>
