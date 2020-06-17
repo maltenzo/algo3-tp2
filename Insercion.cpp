@@ -1,4 +1,9 @@
 #include "funciones.h"
+
+//despues lo adapto para que sea compatible con el main
+
+
+
 int infinito = 10e6; // Valor grande para uasr de cota
 vector<int> insercion(int& l){
     vector<bool> usados(g.size(), false);
