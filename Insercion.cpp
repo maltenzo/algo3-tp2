@@ -44,6 +44,10 @@ arista mas_cercana(vector<bool> usados){
     return e.fin;//el j que me quede es el nodo elegido
 }
 
+
+
+//esto puedo dejarlo mas bonito haciendo que se parezca a la funcion de insercion y reduciendo los for
+//dsps lo hago porque alta paja
 arista mas_barata(vector<bool> usados){
     arista e = arista(0, 0, 0);
     int l_min  = infinito;
