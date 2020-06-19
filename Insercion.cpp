@@ -21,7 +21,7 @@ vector<int> insercion(int& l){
 }
 
 int elegir(vector<bool> usados){
-    arista e = arista(0, 0, 0);
+    int e = 0;
     if (MC){//ELIJO LA MAS cercana
         e = mas_cercana(usados);
     }
@@ -62,7 +62,7 @@ int mas_barata(vector<bool> usados){
                 if (usados[i] && usados[j] && !usados[k]){
                     if(g[i][k] + g[k][j]- g[i][j] < l_min){ //busco la combinacion mas barata
                         l_min = g[i][k] + g[k][j]- g[i][j];//si la encontre, actualizo
-                        nodo = k
+                        nodo = k;
                     }
                 }
             }
