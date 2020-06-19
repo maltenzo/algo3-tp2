@@ -1,56 +1,115 @@
 #include "funciones.h"
 
+
+class unir_find{ //clase creada para krustal eficiente
+public:
+    vector<int> padre;
+    vector<int> altura;
+
+    unir_find(vector<int> p, vector<int> a); //creador
+    int find(int x);						  //encuentra el padre del subarbol de x
+    void unir(int x, int y);				  //cuelga el subarbol de x al de y
+
+};
+
+unir_find::unir_find(vector<int> p, vector<int> a):
+        padre(p), altura(a){}
+
+unir_find init(int n){ //inicia un unir_find con la cantidad de vertices siendo n
+    vector<int> padre(n,0);
+    vector<int> altura(n,1);
+    for(int  i = 0; i<n; i++){
+        padre[i] = i; //al principio cada vértice es su propio subarbol
+    }
+    unir_find res = unir_find(padre, altura);
+    return res;
+}
+
+int unir_find::find(int x){
+    int p = padre[x];
+    if(p != x){                          //si no es raíz
+        padre[x] = this->find(p);	 //busco la raiz de su padre y la escribo como padre de x
+        p = padre[x];
+    }
+    return p;
+}
+
+void unir_find::unir(int x, int y){
+    x = this->find(x);						//busco amabs raices
+    y = this->find(y);
+    if(altura[x] < altura[y]){    // si el subarbol x es menor que el de y
+        padre[x] = y;					//cuelgo el de x al de y
+    }else{
+        padre[y] = x;					//sino, al reves
+    }
+    if(altura[x] == altura[y]){	//si son de la misma alturam entones se colgó y a x, e x aumentó en 1 su altura
+        altura[x] += 1;
+    }
+}
+
+
 //merge sort basado en el peso de la aristas
 void merge_sort(vector<arista>& v,int v_1, int v_2){ //v es el vector, v_1 indice inclusive bajo, v_2 indice exclusivo alto
-	if(v.size() == 1){
+	if(v_1 + 1 == v_2){
 		return;
 	}else{
-		int split = v.size()/2;
+		int split = v_1 + (v_2-v_1)/2;
 		merge_sort(v, v_1, split);
 		merge_sort(v, split, v_2);
-		int i = 0;
+		int i = v_1;
 		int j = split;
-
+        vector<arista> nuevo = v;
 		while(i < split && j < v_2){
 			if( v[i].peso < v[j].peso){
-				v[i+j-split] = v[i];
+				nuevo[i+j-split] = v[i];
 				i++;
 			}else{
-				v[i+j-split] = v[j];
+				nuevo[i+j-split] = v[j];
 				j++;
 			}
 		}
 
-		while(i < v_1){
-			v[i+j-split] = v[i];
+		while(i < split){
+			nuevo[i+j-split] = v[i];
 			i++;
 		}
 
 		while(j < v_2){
-			v[i+j-split] = v[j];
+			nuevo[i+j-split] = v[j];
 			j++;
 		}
 
+		v = nuevo;
 		return;
 	}
 }
 
+int signo_admiracion(int n){
+    int res = 1;
+    for(int i = 2; i<=n;i++){
+        res = res*i;
+    }
+    return res;
+}
+
 vector<arista> sort_aristas(grafo g){ //ordeno las aristas por peso
-	vector<arista> res(g.size()*g.size(), arista(-1,-1,-1));
+	vector<arista> res(signo_admiracion(g.size()-1), arista(-1,-1,-1));
+	int k = 0;
 	for(int i = 0; i<g.size(); i++){
-		for(int j = 0; j<g.size();j++){
+		for(int j = i+1; j<g.size();j++){
 			arista e = arista(i,j,g[i][j]); //primero pongo todas las aristas en un solo vector
-			res[i+j] = e;
+			res[k] = e;
+			k++;
 		}
 	}
-	merge_sort(res,0,g.size()); //luego uso merge
+	merge_sort(res,0,res.size()); //luego uso merge
 	return res;
 }
 
 vector<arista> kruskal(grafo g){ //creo un AGM con krustal
 	int n = g.size();
 	vector<arista> res(n-1, arista(-1,-1,-1));
-	union_find arboles = init(n);                          //arboles es el union_find que voy a usar
+	unir_find arboles = init(n);                        //arboles es el unir_find que voy a usar
 	vector<arista> aristas_ordenadas = sort_aristas(g);	   //hago el sort de las aristas
 	int arista = 0;									   //empiezo en 1 pq ya tengo un subarbol con 1 arista
 
@@ -70,17 +129,17 @@ vector<arista> kruskal(grafo g){ //creo un AGM con krustal
 }
 
 //parte recursia de DFS
-void dfs_recu(vector<arista> t, vector<int>& orden, int padre, int& nro_orden){ //orden es la lista del orden de los vértices, padre es el vertice padre
+void dfs_recu(vector<arista> t, vector<int>& orden, int padre, int& nro_orden, int ultima){ //orden es la lista del orden de los vértices, padre es el vertice padre
     for(int i = 0; i<t.size() && nro_orden<orden.size(); i++){ //en cada recursion, reviso todas las aristas para buscar una con el padre
         arista e = t[i];
-        if(e.inicio == padre){                                  //si encuentro una
+        if(e.inicio == padre && e.fin != ultima){                                  //si encuentro una
             orden[nro_orden] = e.fin;                           //agrego el otro vértice al orden
             nro_orden++;
-            dfs_recu(t,orden,e.fin,nro_orden);           //sigo la rama por ese vértice
-        }else if(e.fin == padre){
+            dfs_recu(t,orden,e.fin,nro_orden,padre);           //sigo la rama por ese vértice
+        }else if(e.fin == padre && e.inicio != ultima){
             orden[nro_orden] = e.inicio;
             nro_orden++;
-            dfs_recu(t,orden,e.fin,nro_orden);
+            dfs_recu(t,orden,e.fin,nro_orden,padre);
         }
     }
     return;
@@ -92,19 +151,21 @@ vector<int> dfs(vector<arista> t){
     int nro_orden = 0;                          //número de ordenq del vértice que estamos buscando en el momento
     vector<int> orden(t.size()+1,-1);  //creo la lista de vértices en orden de recorrido
     orden[nro_orden] = padre;                   //el primero siempre es el vértice 1 (representado como 0 para usar de indice)
-    dfs_recu(t,orden,padre,nro_orden);   //llamo a la recursiva
+    nro_orden++;
+    dfs_recu(t,orden,padre,nro_orden,-1);   //llamo a la recursiva
     return orden;
 }
 
 vector<int> heurAG(grafo g){
 	vector<arista> t = kruskal(g);          //Hago el arbol, representado como una lista de adyacencia
 	vector<int> orden = dfs(t);             //Recorro por dfs, para saber los ordenes
-	vector<int> res(g.size(), 0);     // inicializo la resolución
+	vector<int> res(g.size()+2, 0);     // inicializo la resolución
 	res[0] = g.size();				        // la cantidad de vértices es siempre n
 	res[2] = 1;                             //el primer vertice siempre es "1"
 	for(int i = 1; i<orden.size(); i++){
 		res[i+2] = orden[i]+1;              // Agrego el vértice i de orden
-		res[2]   = g[orden[i-1]][orden[i]]; //Agrego el peso de la arista (V_i-1,V_i)
+		res[1]  += g[orden[i-1]][orden[i]]; //Agrego el peso de la arista (V_i-1,V_i)
 	}
+	res[1] += g[orden[0]][orden[orden.size()-1]]; //añado la arsita que completa el circuito
 	return res;
 }
