@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include <list>
 
@@ -16,11 +15,12 @@ vector<int> aristaMinimaFactible(list<vector<int>> &aristasRestantes){
 void actualizarEstados(vector<int> e, vector<int> &estadoVertices, list<vector<int>> &aristasRestantes){
     estadoVertices[e[0]] ++;
     estadoVertices[e[1]] ++;
-    list<vector<int>> nuevo;
-    for(vector<int> arista: aristasRestantes){
-        if(arista != e && estadoVertices[arista[0]] < 2 && estadoVertices[arista[1]] < 2){nuevo.push_back(arista);}
+
+    auto it = aristasRestantes.begin();
+    while(it != aristasRestantes.end()) {//Sacar aristas inútiles
+        if( (*it) == e || estadoVertices[(*it)[0]] == 2 || estadoVertices[(*it)[1]] == 2) {it = aristasRestantes.erase(it);}
+        else {++it;}
     }
-    aristasRestantes = nuevo;
 }
 
 list<vector<int>> vec2list(vector<vector<int>> &X) {
