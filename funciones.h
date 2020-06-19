@@ -26,7 +26,7 @@ arista elegir(vector<bool> usados);
 arista mas_cercana(vector<bool> usados);
 arista mas_barata(vector<bool> usados);
 arista mas_lejana(vector<bool> usados);
-vector<int> insertar(vector<int> ciclo, int& l, arista e);
+vector<int> insertar(vector<int> ciclo, int& l, int e);
 extern vector<vector<int>> g;
 extern bool MC;
 extern bool MB;
