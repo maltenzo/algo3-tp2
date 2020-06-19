@@ -1,3 +1,4 @@
+
 #ifndef FUNC_H
 #define FUNC_H
 
@@ -22,10 +23,10 @@ vector<int> heurAG(grafo g);
 
 //insercion cpp
 vector<int> insercion(int& l);
-arista elegir(vector<bool> usados);
-arista mas_cercana(vector<bool> usados);
-arista mas_barata(vector<bool> usados);
-arista mas_lejana(vector<bool> usados);
+int elegir(vector<bool> usados);
+int mas_cercana(vector<bool> usados);
+int mas_barata(vector<bool> usados);
+int mas_lejana(vector<bool> usados);
 vector<int> insertar(vector<int> ciclo, int& l, int e);
 extern vector<vector<int>> g;
 extern bool MC;
