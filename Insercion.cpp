@@ -51,25 +51,23 @@ int mas_cercana(vector<bool> usados){
 
 
 
-//esto puedo dejarlo mas bonito haciendo que se parezca a la funcion de insercion y reduciendo los for
-//dsps lo hago porque alta paja
+
 int mas_barata(vector<bool> usados){
     int nodo = 0;
     int l_min  = infinito;
-    for(int i = 0; i < ciclo.size(); i++){//para todo par i, j de vertices en el ciclo
-      nodo_i = ciclo[i];
-        for(int j = i+1; j<=ciclo.size(); j++){
-          j = j%ciclo.size();
-          nodo_j = ciclo[j];
-            for(int k = 0; k< g.size();k++){//tomo un vertice k que no pertenece al ciclo
-                if (!usados[k]){
-                    if(g[nodo_i][k] + g[k][nodo_j]- g[nodo_i][nodo_j] < l_min){ //busco la combinacion mas barata
-                        l_min = g[nodo_i][k] + g[k][nodo_j]- g[nodo_i][nodo_j];//si la encontre, actualizo
-                        nodo = k;
-                    }
+    for(int i = 0; i < ciclo.size(); i++){//para todo par i, j de vertices adyacentes en el ciclo
+      nodo_i = ciclo[i];//agarro el i-esimo nodo
+      j = (i+1)%ciclo.size();// si j = ciclo.size -> j = 0. Sino j = i+1
+      nodo_j = ciclo[j];//agarro el j-esimo nodo
+      for(int k = 0; k< g.size();k++){//tomo un vertice k que no pertenece al ciclo
+            if (!usados[k]){
+                if(g[nodo_i][k] + g[k][nodo_j]- g[nodo_i][nodo_j] < l_min){ //busco la combinacion mas barata
+                    l_min = g[nodo_i][k] + g[k][nodo_j]- g[nodo_i][nodo_j];//si la encontre, actualizo
+                    nodo = k;
                 }
             }
         }
+
     }
     return nodo;//el k que me quede es el nodo elegido
 }
