@@ -1,6 +1,7 @@
 #ifndef FUNC_H
 #define FUNC_H
 
+#include "Tests/tests.h"
 #include "vector"
 using namespace std;
 using lista_adyacencia = vector<vector<int>>;

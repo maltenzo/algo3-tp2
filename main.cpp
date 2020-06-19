@@ -20,7 +20,7 @@ vector<vector<int>> matriz_adyacencia;
 int main(int argc, char** argv)
 {
 	// Leemos el parametro que indica el algoritmo a ejecutar.
-	map<string, string> algoritmos_implementados = {{"ins", "insercion"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
+	map<string, string> algoritmos_implementados = {{"ins", "insercion"},{"agm", "heurAGM"},{"T","Tests"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
 
 	// Verificar que el algoritmo pedido exista.
 	if (argc < 2 || algoritmos_implementados.find(argv[1]) == algoritmos_implementados.end())
@@ -54,7 +54,23 @@ int main(int argc, char** argv)
 	 if (algoritmo == "ins")
 	{
 		circuito = insercion(peso_circuito);
-	}// else if (algoritmo =="")..
+	}else if(algoritmo == "agm"){
+	     circuito = heurAG(matriz_adyacencia);
+	     peso_circuito = circuito[2];
+	     vector<int> temp(circuito[0],0);
+	     for(int i = 2; i<circuito.size();i++){
+	         temp[i-2] = circuito[i];
+	     }
+	     circuito = temp;
+	 }else if(algoritmo == "T"){
+	     circuito = test_AGM_1();
+         peso_circuito = circuito[2];
+         vector<int> temp(circuito[0],0);
+         for(int i = 2; i<circuito.size();i++){
+             temp[i-2] = circuito[i];
+         }
+         circuito = temp;
+	 }// else if (algoritmo =="")..
 
 
 	auto end = chrono::steady_clock::now();
