@@ -6,12 +6,12 @@ vector<int> ciclo={0, 1, 2}; //empiezo con un ciclo base
 
 int infinito = 10e6; // Valor grande para uasr de cota
 vector<int> insercion(int& l){
-    vector<bool> usados(g.size(), false);
+    vector<bool> usados(matriz_adyacencia.size(), false);
     usados[0] = true;
     usados[1] = true;
     usados[2] = true;
-    l = g[0][1] + g[1][2] + g[2][0];//longitud inicial del ciclo
-    while(ciclo.size() < g.size()){ //mientras queden nodos sueltos sigo agregando
+    l = matriz_adyacencia[0][1] + matriz_adyacencia[1][2] + matriz_adyacencia[2][0];//longitud inicial del ciclo
+    while(ciclo.size() < matriz_adyacencia.size()){ //mientras queden nodos sueltos sigo agregando
         int a = elegir(usados); // devuelvo el nodo elegido
         ciclo = insertar(l, a);
         usados[a] = true;
@@ -39,10 +39,10 @@ int mas_cercana(vector<bool> usados){
     int nodo;
     for (int i = 0; i <ciclo.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
         nodo = ciclo[i]; // agarro el nodo en el ciclo
-        for(int j = 0; j< g.size(); j++){//MIRO SUS VECINOS
+        for(int j = 0; j< matriz_adyacencia.size(); j++){//MIRO SUS VECINOS
             if (!usados[j]){//SI EL VECINO NO PERTENECE AL CICLO
-                if (g[nodo][j] < e.peso){//EVALUO SI ES EL MAS BARATO
-                    e = arista(nodo, j, g[nodo][j]);//ACTUALIZO LOS VALORES DEL MAS BARATO
+                if (matriz_adyacencia[nodo][j] < e.peso){//EVALUO SI ES EL MAS BARATO
+                    e = arista(nodo, j, matriz_adyacencia[nodo][j]);//ACTUALIZO LOS VALORES DEL MAS BARATO
                 }
             }
         }
@@ -63,10 +63,10 @@ int mas_barata(vector<bool> usados){
       nodo_i = ciclo[i];//agarro el i-esimo nodo
       j = (i+1)%ciclo.size();// si j = ciclo.size -> j = 0. Sino j = i+1
       nodo_j = ciclo[j];//agarro el j-esimo nodo
-      for(int k = 0; k< g.size();k++){//tomo un vertice k que no pertenece al ciclo
+      for(int k = 0; k< matriz_adyacencia.size();k++){//tomo un vertice k que no pertenece al ciclo
             if (!usados[k]){
-                if(g[nodo_i][k] + g[k][nodo_j]- g[nodo_i][nodo_j] < l_min){ //busco la combinacion mas barata
-                    l_min = g[nodo_i][k] + g[k][nodo_j]- g[nodo_i][nodo_j];//si la encontre, actualizo
+                if(matriz_adyacencia[nodo_i][k] + matriz_adyacencia[k][nodo_j]- matriz_adyacencia[nodo_i][nodo_j] < l_min){ //busco la combinacion mas barata
+                    l_min = matriz_adyacencia[nodo_i][k] + matriz_adyacencia[k][nodo_j]- matriz_adyacencia[nodo_i][nodo_j];//si la encontre, actualizo
                     nodo = k;
                 }
             }
@@ -81,10 +81,10 @@ int mas_lejana(vector<bool> usados){
     arista e = arista(0, 0, -1);
     for(int i = 0; i< ciclo.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
         int nodo = ciclo[i];// agarro el nodo en el ciclo
-        for(int j = 0; j< g.size(); j++){ //MIRO SUS VECINOS
+        for(int j = 0; j< matriz_adyacencia.size(); j++){ //MIRO SUS VECINOS
             if (!usados[j]){//SI EL VECINO NO PERTENECE AL CICLO
-                if (g[nodo][j] > e.peso){//EVALUO SI ES EL MAS lejano/caro
-                    e = arista(nodo, j, g[nodo][j]);//ACTUALIZO LOS VALORES DEL MAS BARATO
+                if (matriz_adyacencia[nodo][j] > e.peso){//EVALUO SI ES EL MAS lejano/caro
+                    e = arista(nodo, j, matriz_adyacencia[nodo][j]);//ACTUALIZO LOS VALORES DEL MAS BARATO
                 }
             }
         }
@@ -100,8 +100,8 @@ vector<int> insertar(int& l, int nodo){
     for (int i = 0; i < ciclo.size(); i++) {//uso todo nodo con el siguiente
         j = (i+1)%ciclo.size();
         //busco el mejor lugar donde insertar el nuevo nodo
-        if(l + g[i][nodo] + g[nodo][j] - g[i][j] < l_min){//veo si agregando un vertice intermedio consigo una mejor longitud
-            l_min = l + g[i][nodo] + g[nodo][j] - g[i][j];//actualizo
+        if(l + matriz_adyacencia[i][nodo] + matriz_adyacencia[nodo][j] - matriz_adyacencia[i][j] < l_min){//veo si agregando un vertice intermedio consigo una mejor longitud
+            l_min = l + matriz_adyacencia[i][nodo] + matriz_adyacencia[nodo][j] - matriz_adyacencia[i][j];//actualizo
             inicio = i;//me guardo el inicio para saber cual es el anterior a donde voy a poner el nuevo
             fin  = j;//este me lo guardo de yapa, no es util
         }

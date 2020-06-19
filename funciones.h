@@ -29,9 +29,10 @@ int mas_cercana(vector<bool> usados);
 int mas_barata(vector<bool> usados);
 int mas_lejana(vector<bool> usados);
 vector<int> insertar(int& l, int e);
-extern vector<vector<int>> g;
+extern vector<vector<int>> matriz_adyacencia;
 extern bool MC;
 extern bool MB;
+extern vector<int> ciclo;
 
 
 #endif // FUNC_H
