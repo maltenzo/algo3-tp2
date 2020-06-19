@@ -82,7 +82,7 @@ int main(int argc, char** argv)
 	clog << total_time << endl;
 
     // Imprimimos el resultado por stdout.
-    cout << circuito.size() << peso_circuito << endl;
+    cout << circuito.size()<<" "<< peso_circuito << endl;
 
     for(int i = 0; i < circuito.size(); i++){
     	cout << circuito[i];
