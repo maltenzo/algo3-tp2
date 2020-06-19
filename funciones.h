@@ -13,13 +13,14 @@ struct arista{ //representa una arista
     arista(int inicio, int fin, int peso): inicio(inicio), fin(fin), peso(peso){};
 };
 
-
+//agm.cpp
 void merge_sort(vector<arista>& v,int v_1, int v_2);
 vector<arista> sort_aristas(grafo g);
 vector<arista> kruskal(grafo g);
 vector<int> dfs(vector<arista> t);
 vector<int> heurAG(grafo g);
 
+//insercion cpp
 vector<int> insercion(int& l);
 arista elegir(vector<bool> usados);
 arista mas_cercana(vector<bool> usados);

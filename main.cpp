@@ -6,7 +6,7 @@
 #include <chrono>
 #include <set>
 #include <map>
-#include "heurAGM.cpp"
+#include "funciones.h"
 
 using namespace std;
 
@@ -20,7 +20,7 @@ vector<vector<int>> matriz_adyacencia;
 int main(int argc, char** argv)
 {
 	// Leemos el parametro que indica el algoritmo a ejecutar.
-	map<string, string> algoritmos_implementados = {{}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
+	map<string, string> algoritmos_implementados = {{"ins", "insercion"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
 
 	// Verificar que el algoritmo pedido exista.
 	if (argc < 2 || algoritmos_implementados.find(argv[1]) == algoritmos_implementados.end())
@@ -43,20 +43,20 @@ int main(int argc, char** argv)
     	matriz_adyacencia[w][v] = peso_arista;
     }
     // Lleno la matriz de adyacencia con las aristas
-    
+
     // Ejecutamos el algoritmo y obtenemos su tiempo de ejecución.
-	
-	int peso_circuito; // Guardado tras correr los algoritmos
+
+	int peso_circuito= 0; // Guardado tras correr los algoritmos
 	vector<int> circuito; // Circuito con los vertices recorridos
 
 	int optimum = INFTY;
 	auto start = chrono::steady_clock::now();
-	/* if (algoritmo == "")
+	 if (algoritmo == "ins")
 	{
-		optimum = FB(0, 0, 0);
-	} else if (algoritmo =="")..
-	 */
-	
+		circuito = insercion(peso_circuito);
+	}// else if (algoritmo =="")..
+
+
 	auto end = chrono::steady_clock::now();
 	double total_time = chrono::duration<double, milli>(end - start).count();
 
