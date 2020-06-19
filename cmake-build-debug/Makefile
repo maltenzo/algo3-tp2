@@ -150,6 +150,33 @@ Insercion.cpp.s:
 	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/Insercion.cpp.s
 .PHONY : Insercion.cpp.s
 
+Tests/tests.o: Tests/tests.cpp.o
+
+.PHONY : Tests/tests.o
+
+# target to build an object file
+Tests/tests.cpp.o:
+	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/Tests/tests.cpp.o
+.PHONY : Tests/tests.cpp.o
+
+Tests/tests.i: Tests/tests.cpp.i
+
+.PHONY : Tests/tests.i
+
+# target to preprocess a source file
+Tests/tests.cpp.i:
+	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/Tests/tests.cpp.i
+.PHONY : Tests/tests.cpp.i
+
+Tests/tests.s: Tests/tests.cpp.s
+
+.PHONY : Tests/tests.s
+
+# target to generate assembly for a file
+Tests/tests.cpp.s:
+	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/Tests/tests.cpp.s
+.PHONY : Tests/tests.cpp.s
+
 heurAGM.o: heurAGM.cpp.o
 
 .PHONY : heurAGM.o
@@ -216,6 +243,9 @@ help:
 	@echo "... Insercion.o"
 	@echo "... Insercion.i"
 	@echo "... Insercion.s"
+	@echo "... Tests/tests.o"
+	@echo "... Tests/tests.i"
+	@echo "... Tests/tests.s"
 	@echo "... heurAGM.o"
 	@echo "... heurAGM.i"
 	@echo "... heurAGM.s"

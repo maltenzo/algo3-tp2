@@ -87,6 +87,12 @@
 		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Insercion.cpp">
 			<Option target="tp2"/>
 		</Unit>
+		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Tests/tests.cpp">
+			<Option target="tp2"/>
+		</Unit>
+		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Tests/tests.h">
+			<Option target="tp2"/>
+		</Unit>
 		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/funciones.h">
 			<Option target="tp2"/>
 		</Unit>

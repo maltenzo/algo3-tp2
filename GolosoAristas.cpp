@@ -3,7 +3,7 @@
 
 using namespace std;
 
-vector<int> aristaMinimaFactible(list<vector<int>> &aristasRestantes){
+vector<int> aristaMinimaFactible(list<vector<int>> &aristasRestantes){//quizas sortear aristas para sacar en O(1)
     int min = INT32_MAX;
     vector<int> res;
     for(vector<int> x : aristasRestantes){
@@ -44,10 +44,11 @@ vector<vector<int>> golosoArista(int V, vector<vector<int>> X){
     }
     return aristasH;
 }
-
+/* lo que use pa testear
 int main() {
     int V = 4;
     vector<vector<int>> X = {{1,2,10},{1,3,15},{1,4,20},{2,3,35},{2,4,25},{3,4,30}};
     vector<vector<int>> camino = golosoArista(V,X);
     return 0;
 }
+*/
