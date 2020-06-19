@@ -1,15 +1,34 @@
-#include <vector>
+#include "funciones.h"
 #include <list>
 
 using namespace std;
 
-vector<int> aristaMinimaFactible(list<vector<int>> &aristasRestantes){//quizas sortear aristas para sacar en O(1)
-    int min = INT32_MAX;
-    vector<int> res;
-    for(vector<int> x : aristasRestantes){
-        if(x[2] < min) {min = x[2]; res = x;}
+bool mayorQue(vector<int> aristaA, vector<int> aristaB){
+    return aristaA[2] < aristaB[2];
+}
+
+vector<int> armarCircuito(vector<vector<int>> &arVec){ //arma respuesta de aristas elegidas
+    vector<int> circuito(arVec.size(), -1);
+    int peso = 0; int vertices = arVec.size(); vector<int> res;
+    for(vector<int> x : arVec){
+        peso += x[2];
+        if(circuito[x[0]-1] != -1){circuito[x[1]-1] = x[0]-1;}
+        else circuito[x[0]-1] = x[1]-1;
+    }
+
+    res.push_back(vertices);res.push_back(peso);
+    int j = -1;
+    while(j != 0){
+        if(j == -1){j = 0;}
+        res.push_back(j+1);
+        j = circuito[j];
     }
     return res;
+}
+
+
+vector<int> aristaMinimaFactible(list<vector<int>> &aristasRestantes){//quizas sortear aristas para sacar en O(1)
+    return aristasRestantes.front();
 }
 
 void actualizarEstados(vector<int> e, vector<int> &estadoVertices, list<vector<int>> &aristasRestantes){
@@ -31,9 +50,9 @@ list<vector<int>> vec2list(vector<vector<int>> &X) {
     return res;
 }
 
-vector<vector<int>> golosoArista(int V, vector<vector<int>> X){
-    vector<vector<int>> aristasUsadas;
-    list<vector<int>> aristasRestantes = vec2list(X); // igualar a X
+vector<int> golosoArista(int V, vector<vector<int>> X){
+    std::sort(X.begin(), X.end(), &mayorQue);
+    list<vector<int>> aristasRestantes = vec2list(X); // igualar a X ordenada
     vector<int> estadoVertices(V, 0);
     vector<vector<int>> aristasH;
 
@@ -42,7 +61,7 @@ vector<vector<int>> golosoArista(int V, vector<vector<int>> X){
         actualizarEstados(e, estadoVertices, aristasRestantes);
         aristasH.push_back(e);
     }
-    return aristasH;
+    return armarCircuito(aristasH);
 }
 /* lo que use pa testear
 int main() {
