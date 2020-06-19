@@ -13,7 +13,7 @@ vector<int> insercion(int& l){
     l = g[0][1] + g[1][2] + g[2][0];//longitud inicial del ciclo
     while(ciclo.size() < g.size()){ //mientras queden nodos sueltos sigo agregando
         int a = elegir(usados); // devuelvo el nodo elegido
-        ciclo = insertar(ciclo, l, a);
+        ciclo = insertar(l, a);
         usados[a] = true;
     }
     return ciclo;
@@ -36,8 +36,9 @@ int elegir(vector<bool> usados){
 
 int mas_cercana(vector<bool> usados){
     arista e = arista(0, 0, infinito);//uso el struct de arista por comodidad
+    int nodo;
     for (int i = 0; i <ciclo.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
-        nodo = ciclo[i] // agarro el nodo en el ciclo
+        nodo = ciclo[i]; // agarro el nodo en el ciclo
         for(int j = 0; j< g.size(); j++){//MIRO SUS VECINOS
             if (!usados[j]){//SI EL VECINO NO PERTENECE AL CICLO
                 if (g[nodo][j] < e.peso){//EVALUO SI ES EL MAS BARATO
@@ -53,7 +54,10 @@ int mas_cercana(vector<bool> usados){
 
 
 int mas_barata(vector<bool> usados){
-    int nodo = 0;
+    int j;
+    int nodo;
+    int nodo_i;
+    int nodo_j;
     int l_min  = infinito;
     for(int i = 0; i < ciclo.size(); i++){//para todo par i, j de vertices adyacentes en el ciclo
       nodo_i = ciclo[i];//agarro el i-esimo nodo
@@ -76,7 +80,7 @@ int mas_barata(vector<bool> usados){
 int mas_lejana(vector<bool> usados){
     arista e = arista(0, 0, -1);
     for(int i = 0; i< ciclo.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
-        int nodo = ciclo[i]// agarro el nodo en el ciclo
+        int nodo = ciclo[i];// agarro el nodo en el ciclo
         for(int j = 0; j< g.size(); j++){ //MIRO SUS VECINOS
             if (!usados[j]){//SI EL VECINO NO PERTENECE AL CICLO
                 if (g[nodo][j] > e.peso){//EVALUO SI ES EL MAS lejano/caro
