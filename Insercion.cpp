@@ -76,7 +76,7 @@ int mas_lejana(vector<bool> usados){
     arista e = arista(0, 0, -1);
     for(int i = 0; i< g.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
         for(int j = 0; j< g.size(); j++){ //MIRO SUS VECINOS
-            if (!usados[j]){//SI EL VECINO NO PERTENECE AL CICLO
+            if (!usados[j] && usados[i]){//SI EL VECINO NO PERTENECE AL CICLO
                 if (g[i][j] > e.peso){//EVALUO SI ES EL MAS lejano/caro
                     e = arista(i, j, g[i][j]);//ACTUALIZO LOS VALORES DEL MAS BARATO
                 }
