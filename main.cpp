@@ -11,7 +11,8 @@
 using namespace std;
 
 int INFTY = 10e6; // Valor para indicar que no hubo solución.
-
+bool MC = false;
+bool MB = false;
 int n, m; // # nodos, # aristas
 vector<vector<int>> matriz_adyacencia;
 
@@ -53,6 +54,7 @@ int main(int argc, char** argv)
 	auto start = chrono::steady_clock::now();
 	 if (algoritmo == "ins")
 	{
+		MB = true;
 		circuito = insercion(peso_circuito);
 	}else if(algoritmo == "agm"){
 	     circuito = heurAG(matriz_adyacencia);
