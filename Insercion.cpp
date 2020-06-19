@@ -1,7 +1,7 @@
 #include "funciones.h"
 
 //despues lo adapto para que sea compatible con el main
-vector<int> res={0, 1, 2}; //empiezo con un ciclo base
+vector<int> ciclo={0, 1, 2}; //empiezo con un ciclo base
 
 
 int infinito = 10e6; // Valor grande para uasr de cota
@@ -11,12 +11,12 @@ vector<int> insercion(int& l){
     usados[1] = true;
     usados[2] = true;
     l = g[0][1] + g[1][2] + g[2][0];//longitud inicial del ciclo
-    while(res.size() < g.size()){ //mientras queden nodos sueltos sigo agregando
+    while(ciclo.size() < g.size()){ //mientras queden nodos sueltos sigo agregando
         int a = elegir(usados); // devuelvo el nodo elegido
-        res = insertar(res, l, a);
+        ciclo = insertar(ciclo, l, a);
         usados[a] = true;
     }
-    return res;
+    return ciclo;
 }
 
 int elegir(vector<bool> usados){
@@ -36,8 +36,8 @@ int elegir(vector<bool> usados){
 
 int mas_cercana(vector<bool> usados){
     arista e = arista(0, 0, infinito);//uso el struct de arista por comodidad
-    for (int i = 0; i <res.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
-        nodo = res[i] // agarro el nodo en el ciclo
+    for (int i = 0; i <ciclo.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
+        nodo = ciclo[i] // agarro el nodo en el ciclo
         for(int j = 0; j< g.size(); j++){//MIRO SUS VECINOS
             if (!usados[j]){//SI EL VECINO NO PERTENECE AL CICLO
                 if (g[nodo][j] < e.peso){//EVALUO SI ES EL MAS BARATO
@@ -74,8 +74,8 @@ int mas_barata(vector<bool> usados){
 
 int mas_lejana(vector<bool> usados){
     arista e = arista(0, 0, -1);
-    for(int i = 0; i< res.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
-        int nodo = res[i]// agarro el nodo en el ciclo
+    for(int i = 0; i< ciclo.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
+        int nodo = ciclo[i]// agarro el nodo en el ciclo
         for(int j = 0; j< g.size(); j++){ //MIRO SUS VECINOS
             if (!usados[j]){//SI EL VECINO NO PERTENECE AL CICLO
                 if (g[nodo][j] > e.peso){//EVALUO SI ES EL MAS lejano/caro
@@ -87,7 +87,7 @@ int mas_lejana(vector<bool> usados){
     return e.fin; //el j que me quedo es el elegido
 }
 
-vector<int> insertar(vector<int> ciclo, int& l, int nodo){
+vector<int> insertar(vint& l, int nodo){
     int l_min = infinito;
     int inicio = 0;
     int fin = 0;

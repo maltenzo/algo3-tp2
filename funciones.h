@@ -28,7 +28,7 @@ int elegir(vector<bool> usados);
 int mas_cercana(vector<bool> usados);
 int mas_barata(vector<bool> usados);
 int mas_lejana(vector<bool> usados);
-vector<int> insertar(vector<int> ciclo, int& l, int e);
+vector<int> insertar(int& l, int e);
 extern vector<vector<int>> g;
 extern bool MC;
 extern bool MB;
