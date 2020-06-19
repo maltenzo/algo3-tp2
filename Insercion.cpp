@@ -20,7 +20,7 @@ vector<int> insercion(int& l){
     return res;
 }
 
-arista elegir(vector<bool> usados){
+int elegir(vector<bool> usados){
     arista e = arista(0, 0, 0);
     if (MC){//ELIJO LA MAS cercana
         e = mas_cercana(usados);
