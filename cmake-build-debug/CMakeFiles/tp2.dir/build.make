@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/114/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /cygdrive/c/Users/Usuario/AppData/Local/JetBrains/CLion2020.1/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /snap/clion/114/bin/cmake/linux/bin/cmake -E remove -f
+RM = /cygdrive/c/Users/Usuario/AppData/Local/JetBrains/CLion2020.1/cygwin_cmake/bin/cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2
+CMAKE_SOURCE_DIR = "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug
+CMAKE_BINARY_DIR = "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/tp2.dir/depend.make
@@ -59,55 +59,55 @@ include CMakeFiles/tp2.dir/flags.make
 
 CMakeFiles/tp2.dir/main.cpp.o: CMakeFiles/tp2.dir/flags.make
 CMakeFiles/tp2.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tp2.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tp2.dir/main.cpp.o -c /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tp2.dir/main.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tp2.dir/main.cpp.o -c "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/main.cpp"
 
 CMakeFiles/tp2.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tp2.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/main.cpp > CMakeFiles/tp2.dir/main.cpp.i
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/main.cpp" > CMakeFiles/tp2.dir/main.cpp.i
 
 CMakeFiles/tp2.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tp2.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/main.cpp -o CMakeFiles/tp2.dir/main.cpp.s
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/main.cpp" -o CMakeFiles/tp2.dir/main.cpp.s
 
 CMakeFiles/tp2.dir/heurAGM.cpp.o: CMakeFiles/tp2.dir/flags.make
 CMakeFiles/tp2.dir/heurAGM.cpp.o: ../heurAGM.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tp2.dir/heurAGM.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tp2.dir/heurAGM.cpp.o -c /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/heurAGM.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tp2.dir/heurAGM.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tp2.dir/heurAGM.cpp.o -c "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/heurAGM.cpp"
 
 CMakeFiles/tp2.dir/heurAGM.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tp2.dir/heurAGM.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/heurAGM.cpp > CMakeFiles/tp2.dir/heurAGM.cpp.i
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/heurAGM.cpp" > CMakeFiles/tp2.dir/heurAGM.cpp.i
 
 CMakeFiles/tp2.dir/heurAGM.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tp2.dir/heurAGM.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/heurAGM.cpp -o CMakeFiles/tp2.dir/heurAGM.cpp.s
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/heurAGM.cpp" -o CMakeFiles/tp2.dir/heurAGM.cpp.s
 
 CMakeFiles/tp2.dir/Insercion.cpp.o: CMakeFiles/tp2.dir/flags.make
 CMakeFiles/tp2.dir/Insercion.cpp.o: ../Insercion.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tp2.dir/Insercion.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tp2.dir/Insercion.cpp.o -c /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Insercion.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tp2.dir/Insercion.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tp2.dir/Insercion.cpp.o -c "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/Insercion.cpp"
 
 CMakeFiles/tp2.dir/Insercion.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tp2.dir/Insercion.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Insercion.cpp > CMakeFiles/tp2.dir/Insercion.cpp.i
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/Insercion.cpp" > CMakeFiles/tp2.dir/Insercion.cpp.i
 
 CMakeFiles/tp2.dir/Insercion.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tp2.dir/Insercion.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Insercion.cpp -o CMakeFiles/tp2.dir/Insercion.cpp.s
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/Insercion.cpp" -o CMakeFiles/tp2.dir/Insercion.cpp.s
 
 CMakeFiles/tp2.dir/Tests/tests.cpp.o: CMakeFiles/tp2.dir/flags.make
 CMakeFiles/tp2.dir/Tests/tests.cpp.o: ../Tests/tests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tp2.dir/Tests/tests.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tp2.dir/Tests/tests.cpp.o -c /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Tests/tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tp2.dir/Tests/tests.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tp2.dir/Tests/tests.cpp.o -c "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/Tests/tests.cpp"
 
 CMakeFiles/tp2.dir/Tests/tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tp2.dir/Tests/tests.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Tests/tests.cpp > CMakeFiles/tp2.dir/Tests/tests.cpp.i
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/Tests/tests.cpp" > CMakeFiles/tp2.dir/Tests/tests.cpp.i
 
 CMakeFiles/tp2.dir/Tests/tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tp2.dir/Tests/tests.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Tests/tests.cpp -o CMakeFiles/tp2.dir/Tests/tests.cpp.s
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/Tests/tests.cpp" -o CMakeFiles/tp2.dir/Tests/tests.cpp.s
 
 # Object files for target tp2
 tp2_OBJECTS = \
@@ -119,17 +119,17 @@ tp2_OBJECTS = \
 # External object files for target tp2
 tp2_EXTERNAL_OBJECTS =
 
-tp2: CMakeFiles/tp2.dir/main.cpp.o
-tp2: CMakeFiles/tp2.dir/heurAGM.cpp.o
-tp2: CMakeFiles/tp2.dir/Insercion.cpp.o
-tp2: CMakeFiles/tp2.dir/Tests/tests.cpp.o
-tp2: CMakeFiles/tp2.dir/build.make
-tp2: CMakeFiles/tp2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable tp2"
+tp2.exe: CMakeFiles/tp2.dir/main.cpp.o
+tp2.exe: CMakeFiles/tp2.dir/heurAGM.cpp.o
+tp2.exe: CMakeFiles/tp2.dir/Insercion.cpp.o
+tp2.exe: CMakeFiles/tp2.dir/Tests/tests.cpp.o
+tp2.exe: CMakeFiles/tp2.dir/build.make
+tp2.exe: CMakeFiles/tp2.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable tp2.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tp2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/tp2.dir/build: tp2
+CMakeFiles/tp2.dir/build: tp2.exe
 
 .PHONY : CMakeFiles/tp2.dir/build
 
@@ -138,6 +138,6 @@ CMakeFiles/tp2.dir/clean:
 .PHONY : CMakeFiles/tp2.dir/clean
 
 CMakeFiles/tp2.dir/depend:
-	cd /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2 /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2 /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug /home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/CMakeFiles/tp2.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub" "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub" "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug" "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug" "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/CMakeFiles/tp2.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/tp2.dir/depend
 

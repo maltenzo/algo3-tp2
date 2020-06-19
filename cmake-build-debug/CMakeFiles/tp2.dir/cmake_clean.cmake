@@ -3,7 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/tp2.dir/Tests/tests.cpp.o"
   "CMakeFiles/tp2.dir/heurAGM.cpp.o"
   "CMakeFiles/tp2.dir/main.cpp.o"
-  "tp2"
+  "libtp2.dll.a"
+  "tp2.exe"
   "tp2.pdb"
 )
 

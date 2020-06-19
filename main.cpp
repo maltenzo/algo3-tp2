@@ -21,7 +21,7 @@ vector<vector<int>> matriz_adyacencia;
 int main(int argc, char** argv)
 {
 	// Leemos el parametro que indica el algoritmo a ejecutar.
-	map<string, string> algoritmos_implementados = {{"ins", "insercion"},{"agm", "heurAGM"},{"T","Tests"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
+	map<string, string> algoritmos_implementados = {{"ins", "insercion"},{"agm", "heurAGM"},{"T_AGM","Tests AGM"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
 
 	// Verificar que el algoritmo pedido exista.
 	if (argc < 2 || algoritmos_implementados.find(argv[1]) == algoritmos_implementados.end())
@@ -64,9 +64,9 @@ int main(int argc, char** argv)
 	         temp[i-2] = circuito[i];
 	     }
 	     circuito = temp;
-	 }else if(algoritmo == "T"){
+	 }else if(algoritmo == "T_AGM"){
 	     circuito = test_AGM_1();
-         peso_circuito = circuito[2];
+         peso_circuito = circuito[1];
          vector<int> temp(circuito[0],0);
          for(int i = 2; i<circuito.size();i++){
              temp[i-2] = circuito[i];

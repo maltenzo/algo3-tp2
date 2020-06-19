@@ -8,101 +8,97 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="tp2">
-				<Option output="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/tp2" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug"/>
+				<Option output="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/tp2.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include"/>
 					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 tp2"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 tp2"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="tp2/fast">
-				<Option output="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/tp2" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug"/>
+				<Option output="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/tp2.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include"/>
 					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 tp2/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 tp2/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Usuario/Desktop/labo/Algo\ 3/tp2\ gihub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Insercion.cpp">
+		<Unit filename="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/Insercion.cpp">
 			<Option target="tp2"/>
 		</Unit>
-		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Tests/tests.cpp">
+		<Unit filename="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/Tests/tests.cpp">
 			<Option target="tp2"/>
 		</Unit>
-		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/Tests/tests.h">
+		<Unit filename="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/Tests/tests.h">
 			<Option target="tp2"/>
 		</Unit>
-		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/funciones.h">
+		<Unit filename="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/funciones.h">
 			<Option target="tp2"/>
 		</Unit>
-		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/heurAGM.cpp">
+		<Unit filename="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/heurAGM.cpp">
 			<Option target="tp2"/>
 		</Unit>
-		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/main.cpp">
+		<Unit filename="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/main.cpp">
 			<Option target="tp2"/>
 		</Unit>
-		<Unit filename="/home/nacho/Desktop/primerCuatri2020/Algo3/repoTp2/algo3-tp2/CMakeLists.txt">
+		<Unit filename="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
