@@ -87,7 +87,7 @@ int mas_lejana(vector<bool> usados){
     return e.fin; //el j que me quedo es el elegido
 }
 
-vector<int> insertar(vint& l, int nodo){
+vector<int> insertar(int& l, int nodo){
     int l_min = infinito;
     int inicio = 0;
     int fin = 0;
