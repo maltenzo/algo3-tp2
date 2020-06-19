@@ -15,7 +15,7 @@ vector<int> insercion(int& l){
     while(res.size() < g.size()){ //mientras queden nodos sueltos sigo agregando
         int a = elegir(usados); // devuelvo el nodo elegido
         res = insertar(res, l, a);
-        usados[a.fin] = true;
+        usados[a] = true;
     }
     return res;
 }
