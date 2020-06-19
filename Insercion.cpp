@@ -56,12 +56,15 @@ int mas_cercana(vector<bool> usados){
 int mas_barata(vector<bool> usados){
     int nodo = 0;
     int l_min  = infinito;
-    for(int i = 0; i < g.size(); i++){//para todo par i, j de vertices en el ciclo
-        for(int j = 0; j<g.size(); j++){
+    for(int i = 0; i < ciclo.size(); i++){//para todo par i, j de vertices en el ciclo
+      nodo_i = ciclo[i];
+        for(int j = i+1; j<=ciclo.size(); j++){
+          j = j%ciclo.size();
+          nodo_j = ciclo[j];
             for(int k = 0; k< g.size();k++){//tomo un vertice k que no pertenece al ciclo
-                if (usados[i] && usados[j] && !usados[k]){
-                    if(g[i][k] + g[k][j]- g[i][j] < l_min){ //busco la combinacion mas barata
-                        l_min = g[i][k] + g[k][j]- g[i][j];//si la encontre, actualizo
+                if (!usados[k]){
+                    if(g[nodo_i][k] + g[k][nodo_j]- g[nodo_i][nodo_j] < l_min){ //busco la combinacion mas barata
+                        l_min = g[nodo_i][k] + g[k][nodo_j]- g[nodo_i][nodo_j];//si la encontre, actualizo
                         nodo = k;
                     }
                 }
@@ -93,11 +96,7 @@ vector<int> insertar(int& l, int nodo){
     int fin = 0;
     int j = 0;
     for (int i = 0; i < ciclo.size(); i++) {//uso todo nodo con el siguiente
-        if(i+1 == ciclo.size()){
-            j = 0;//si estoy en el ultimo el siguiente es el primero
-        }else{
-            j = i+1;
-        }
+        j = (i+1)%ciclo.size();
         //busco el mejor lugar donde insertar el nuevo nodo
         if(l + g[i][nodo] + g[nodo][j] - g[i][j] < l_min){//veo si agregando un vertice intermedio consigo una mejor longitud
             l_min = l + g[i][nodo] + g[nodo][j] - g[i][j];//actualizo
