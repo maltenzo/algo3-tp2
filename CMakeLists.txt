@@ -7,4 +7,4 @@ add_executable(tp2
         main.cpp
         funciones.h
         heurAGM.cpp
-        Insercion.cpp)
+        Insercion.cpp Tests/tests.h Tests/tests.cpp)
