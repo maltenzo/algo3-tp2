@@ -54,7 +54,7 @@ int mas_cercana(vector<bool> usados){
 //esto puedo dejarlo mas bonito haciendo que se parezca a la funcion de insercion y reduciendo los for
 //dsps lo hago porque alta paja
 int mas_barata(vector<bool> usados){
-    arista e = arista(0, 0, 0);
+    int nodo = 0;
     int l_min  = infinito;
     for(int i = 0; i < g.size(); i++){//para todo par i, j de vertices en el ciclo
         for(int j = 0; j<g.size(); j++){
@@ -62,13 +62,13 @@ int mas_barata(vector<bool> usados){
                 if (usados[i] && usados[j] && !usados[k]){
                     if(g[i][k] + g[k][j]- g[i][j] < l_min){ //busco la combinacion mas barata
                         l_min = g[i][k] + g[k][j]- g[i][j];//si la encontre, actualizo
-                        e = arista(i, k, g[i][k]);//si la encontre, actualizo
+                        nodo = k
                     }
                 }
             }
         }
     }
-    return e.fin;//el k que me quede es el nodo elegido
+    return nodo;//el k que me quede es el nodo elegido
 }
 
 
