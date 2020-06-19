@@ -35,7 +35,7 @@ arista elegir(vector<bool> usados){
 
 }
 
-arista mas_cercana(vector<bool> usados){
+int mas_cercana(vector<bool> usados){
     arista e = arista(0, 0, infinito);//uso el struct de arista por comodidad
     for (int i = 0; i <g.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
         for(int j = 0; j< g.size(); j++){//MIRO SUS VECINOS
@@ -53,7 +53,7 @@ arista mas_cercana(vector<bool> usados){
 
 //esto puedo dejarlo mas bonito haciendo que se parezca a la funcion de insercion y reduciendo los for
 //dsps lo hago porque alta paja
-arista mas_barata(vector<bool> usados){
+int mas_barata(vector<bool> usados){
     arista e = arista(0, 0, 0);
     int l_min  = infinito;
     for(int i = 0; i < g.size(); i++){//para todo par i, j de vertices en el ciclo
@@ -72,7 +72,7 @@ arista mas_barata(vector<bool> usados){
 }
 
 
-arista mas_lejana(vector<bool> usados){
+int mas_lejana(vector<bool> usados){
     arista e = arista(0, 0, -1);
     for(int i = 0; i< g.size(); i++){//PARA TODOS LOS NODOS DENTRO DEL CICLO
         for(int j = 0; j< g.size(); j++){ //MIRO SUS VECINOS
