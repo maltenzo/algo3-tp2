@@ -2,6 +2,8 @@
 
 //despues lo adapto para que sea compatible con el main
 vector<int> ciclo={0, 1, 2}; //empiezo con un ciclo base
+int anterior_MB = 0;
+int posterior_MB =0;
 
 
 int infinito = 10e6; // Valor grande para uasr de cota
@@ -68,6 +70,8 @@ int mas_barata(vector<bool> usados){
                 if(matriz_adyacencia[nodo_i][k] + matriz_adyacencia[k][nodo_j]- matriz_adyacencia[nodo_i][nodo_j] < l_min){ //busco la combinacion mas barata
                     l_min = matriz_adyacencia[nodo_i][k] + matriz_adyacencia[k][nodo_j]- matriz_adyacencia[nodo_i][nodo_j];//si la encontre, actualizo
                     nodo = k;
+                    anterior_MB = i;
+                    posterior_MB = j;
                 }
             }
         }
@@ -97,14 +101,22 @@ vector<int> insertar(int& l, int nodo){
     int inicio = 0;
     int fin = 0;
     int j = 0;
-    for (int i = 0; i < ciclo.size(); i++) {//uso todo nodo con el siguiente
-        j = (i+1)%ciclo.size();
-        //busco el mejor lugar donde insertar el nuevo nodo
-        if(l + matriz_adyacencia[i][nodo] + matriz_adyacencia[nodo][j] - matriz_adyacencia[i][j] < l_min){//veo si agregando un vertice intermedio consigo una mejor longitud
-            l_min = l + matriz_adyacencia[i][nodo] + matriz_adyacencia[nodo][j] - matriz_adyacencia[i][j];//actualizo
-            inicio = i;//me guardo el inicio para saber cual es el anterior a donde voy a poner el nuevo
-            fin  = j;//este me lo guardo de yapa, no es util
-        }
+    if (!MB) {//si elegi la arista por mas barata puedo saltearme este for
+      for (int i = 0; i < ciclo.size(); i++) {//uso todo nodo con el siguiente
+          j = (i+1)%ciclo.size();
+          //busco el mejor lugar donde insertar el nuevo nodo
+          if(l + matriz_adyacencia[i][nodo] + matriz_adyacencia[nodo][j] - matriz_adyacencia[i][j] < l_min){//veo si agregando un vertice intermedio consigo una mejor longitud
+              l_min = l + matriz_adyacencia[i][nodo] + matriz_adyacencia[nodo][j] - matriz_adyacencia[i][j];//actualizo
+              inicio = i;//me guardo el inicio para saber cual es el anterior a donde voy a poner el nuevo
+              fin  = j;//este me lo guardo de yapa, no es util
+          }
+      }
+    }
+    else{
+      inicio = anterior_MB;
+      fin = posterior_MB;
+      l_min = l + matriz_adyacencia[incio][nodo] + matriz_adyacencia[nodo][fin] - matriz_adyacencia[inicio][fin];
+
     }
     vector<int> v = {};
     //copio el ciclo viejo y agrego el nuevo nodo donde vaya
