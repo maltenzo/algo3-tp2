@@ -52,14 +52,15 @@ vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe e
 	for(int it = 0; it < OPT_ITERACIONES; it++){ 
 		
 		for(int i = 0; i < n; i++){
+			int arista_ab = matriz_adyacencia[candidato[i]][candidato[(i+1) % n]]; // Arista A--B
 			for(int j = 0; j < n; j++){
 				// Para cada par de vertices, me fijo el swappeo
 
-				int arista_ab = matriz_adyacencia[candidato[i]][candidato[(i+1) % n]]; // Arista A--B
+				
 				int arista_cd = matriz_adyacencia[candidato[j]][candidato[(j+1) % n]]; // Arista C--D
 				candidato = swap(candidato, i, j);
 
-				int arista_ac = matriz_adyacencia[candidato[i]][candidato[(i+1) % n]];
+				int arista_ac = matriz_adyacencia[candidato[i]][candidato[(i+1) % n]];//esta no se puede sacar del ciclo porque es post swap
 				int arista_bd = matriz_adyacencia[candidato[j]][candidato[(j+1) % n]];
 				// Si intercambiando A--B por A--C, y C--D por B--D mejora:
 
