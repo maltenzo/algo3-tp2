@@ -156,16 +156,16 @@ vector<int> dfs(vector<arista> t){
     return orden;
 }
 
-vector<int> heurAG(grafo g){
+vector<int> heurAG(grafo g, int& p){
 	vector<arista> t = kruskal(g);          //Hago el arbol, representado como una lista de adyacencia
 	vector<int> orden = dfs(t);             //Recorro por dfs, para saber los ordenes
-	vector<int> res(g.size()+2, 0);     // inicializo la resolución
-	res[0] = g.size();				        // la cantidad de vértices es siempre n
-	res[2] = 1;                             //el primer vertice siempre es "1"
-	for(int i = 1; i<orden.size(); i++){
-		res[i+2] = orden[i]+1;              // Agrego el vértice i de orden
-		res[1]  += g[orden[i-1]][orden[i]]; //Agrego el peso de la arista (V_i-1,V_i)
+	p = 0;                                  //seteo el peso en 0
+    p += g[orden[0]][orden[orden.size()-1]]; //añado la arsita que completa el circuito
+    orden[0] = 1;                           //cambio el vertice a convención 1,n
+    for(int i = 1; i<orden.size(); i++){
+        p  += g[orden[i-1]-1][orden[i]];    //Agrego el peso de la arista (V_i-1,V_i)
+        orden[i] = orden[i]+1;              // Agrego el vértice i de orden
 	}
-	res[1] += g[orden[0]][orden[orden.size()-1]]; //añado la arsita que completa el circuito
-	return res;
+
+	return orden;
 }

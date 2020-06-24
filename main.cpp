@@ -57,13 +57,7 @@ int main(int argc, char** argv)
 		MB = true;
 		circuito = insercion(peso_circuito);
 	}else if(algoritmo == "agm"){
-	     circuito = heurAG(matriz_adyacencia);
-	     peso_circuito = circuito[2];
-	     vector<int> temp(circuito[0],0);
-	     for(int i = 2; i<circuito.size();i++){
-	         temp[i-2] = circuito[i];
-	     }
-	     circuito = temp;
+	     circuito = heurAG(matriz_adyacencia, peso_circuito);
 	 }else if(algoritmo == "T_AGM"){
 	     circuito = test_AGM_1();
          peso_circuito = circuito[1];
