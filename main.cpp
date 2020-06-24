@@ -40,8 +40,8 @@ int main(int argc, char** argv)
 
     for(int i = 0; i < m; i++){ //Tengo m lineas de entrada indicando v, w, l((v,w))
     	cin >> v >> w >> peso_arista;
-    	matriz_adyacencia[v][w] = peso_arista;
-    	matriz_adyacencia[w][v] = peso_arista;
+    	matriz_adyacencia[v-1][w-1] = peso_arista;
+    	matriz_adyacencia[w-1][v-1] = peso_arista;
     }
     // Lleno la matriz de adyacencia con las aristas
 

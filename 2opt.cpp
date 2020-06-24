@@ -17,6 +17,7 @@ void swap(vector<int> &c, int i, int j){
 // Esta version inicial solo devuelve 1 vecino 2opt, claramente desaprovechamos
 // mucho computo y podriamos usar el top 10 o ir guardando mas de uno.
 
+
 vector<int> localSearch2opt(vector<int> ciclo){ // recibe el ciclo generado por AGM o alguna otra heuristica
 	
 	// Pre, el ciclo es de longitud n = matriz_adyacencia.size()
