@@ -115,7 +115,7 @@ vector<int> insertar(int& l, int nodo){
     else{
       inicio = anterior_MB;
       fin = posterior_MB;
-      l_min = l + matriz_adyacencia[incio][nodo] + matriz_adyacencia[nodo][fin] - matriz_adyacencia[inicio][fin];
+      l_min = l + matriz_adyacencia[inicio][nodo] + matriz_adyacencia[nodo][fin] - matriz_adyacencia[inicio][fin];
 
     }
     vector<int> v = {};
