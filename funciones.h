@@ -20,7 +20,7 @@ void merge_sort(vector<arista>& v,int v_1, int v_2);
 vector<arista> sort_aristas(grafo g);
 vector<arista> kruskal(grafo g);
 vector<int> dfs(vector<arista> t);
-vector<int> heurAG(grafo g);
+vector<int> heurAG(grafo g, int& p);
 
 //insercion cpp
 vector<int> insercion(int& l);

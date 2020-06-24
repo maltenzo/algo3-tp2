@@ -18,6 +18,9 @@ vector<int> insercion(int& l){
         ciclo = insertar(l, a);
         usados[a] = true;
     }
+    for (int i = 0; i < ciclo.size(); i++) {
+      ciclo[i] += 1;
+    }
     return ciclo;
 }
 
