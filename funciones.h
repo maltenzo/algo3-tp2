@@ -33,6 +33,7 @@ extern vector<vector<int>> matriz_adyacencia;
 extern bool MC;
 extern bool MB;
 extern vector<int> ciclo;
+extern int SUBVECINDAD_PORCENTAJE;
 
 
 #endif // FUNC_H
