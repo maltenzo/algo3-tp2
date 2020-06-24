@@ -53,20 +53,24 @@ vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe e
 		
 		for(int i = 0; i < n; i++){
 			int arista_ab = matriz_adyacencia[candidato[i]][candidato[(i+1) % n]]; // Arista A--B
+			int arista_preaA = matriz_adyacencia[candidato[i]][candidato[(i-1) % n]]; // Arista A--Anterior A
 			for(int j = 0; j < n; j++){
 				// Para cada par de vertices, me fijo el swappeo
 
 				
 				int arista_cd = matriz_adyacencia[candidato[j]][candidato[(j+1) % n]]; // Arista C--D
+				int arista_preC = matriz_adyacencia[candidato[j]][candidato[(j-1) % n]]; // Arista C-- anterior c
 				candidato = swap(candidato, i, j);
-
-				int arista_ac = matriz_adyacencia[candidato[i]][candidato[(i+1) % n]];//esta no se puede sacar del ciclo porque es post swap
-				int arista_bd = matriz_adyacencia[candidato[j]][candidato[(j+1) % n]];
-				// Si intercambiando A--B por A--C, y C--D por B--D mejora:
+				//swapeamos a con c
+				int arista_cb = matriz_adyacencia[candidato[i]][candidato[(i+1) % n]];//esta no se puede sacar del ciclo porque es post swap
+				int arista_ad = matriz_adyacencia[candidato[j]][candidato[(j+1) % n]];
+				int arista_preAC = matriz_adyacencia[candidato[i]][candidato[(i-1) % n]];//esta no se puede sacar del ciclo porque es post swap
+				int arista_preCA = matriz_adyacencia[candidato[j]][candidato[(j-1) % n]];
+				// Si intercambiando preA--A--B por preA--C--B, y preC--C--D por preC--A--D mejora:
 
 				// Esto es basicamente para ahorrarse hacer "costo(candidato)"
 				// El costo antes del swap +- las aristas involucradas
-				candidato[n] = candidato[n] -  arista_ab - arista_cd + arista_ac + arista_bd;
+				candidato[n] = candidato[n] -  arista_ab - arista_cd + arista_cb + arista_ad - arista_preA - arista_preC + arista_preAC + arista_preCA ;
 				
 				
 				for(int k = 0; k < SUBVECINIDAD_TAM; k++){
