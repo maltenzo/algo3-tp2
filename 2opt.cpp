@@ -69,7 +69,14 @@ vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe e
 				
 				
 				for(int k = 0; k < SUBVECINIDAD_TAM; k++){
-					if(mejores_ciclos[SUBVECINIDAD_TAM - k][n] > candidato[n]){
+					if(k == SUBVECINIDAD_TAM){
+						if(mejores_ciclos[SUBVECINIDAD_TAM - k][n] > candidato[n]){
+							mejores_ciclos[SUBVECINIDAD_TAM - k] = candidato;
+							break;
+						}						
+					}
+					
+					else if(mejores_ciclos[SUBVECINIDAD_TAM - k][n] > candidato[n] && candidato[n] > mejores_ciclos[SUBVECINIDAD_TAM][n]){
 						mejores_ciclos[SUBVECINIDAD_TAM - k] = candidato;
 						break;
 					} // Remplazo por el peor de los que voy guardando
