@@ -1,3 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cstdio>
+#include <cstdlib>
+#include <chrono>
+#include <set>
+#include <map>
+#include "funciones.h"
+
+using namespace std;
+
+#define OPT_ITERACIONES 100
+#define SUBVECINIDAD_TAM 10
+
+int INFTY = 10e6; // Valor para indicar que no hubo solución.
 
 int costo(vector<int> ciclo){
 	int res = 0;
@@ -18,14 +34,20 @@ void swap(vector<int> &c, int i, int j){
 // mucho computo y podriamos usar el top 10 o ir guardando mas de uno.
 
 
-vector<int> localSearch2opt(vector<int> ciclo){ // recibe el ciclo generado por AGM o alguna otra heuristica
-	
-	// Pre, el ciclo es de longitud n = matriz_adyacencia.size()
 
-	vector<int> candidato = ciclo;
-	int costoInicial = costo();
-	int mejoraDeCosto;
+vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe el ciclo generado por AGM o alguna otra heuristica
+	// l es el costo del circuito que me pasan
+	// Pre, el ciclo es de longitud n = matriz_adyacencia.size()
+	
 	int n = ciclo.size();
+	vector<vector<int>> mejores_ciclos(SUBVECINIDAD_TAM, vector<int>(n+1, INFTY)); // Ciclo con costo al final
+	// vector de ciclos, donde en cada ciclo tenemos {v2,v0,v4,...,v9,CostoDeCiclo}
+	vector<int> candidato = ciclo;
+	int mejoraDeCosto;
+
+
+	candidato.push_back(l)
+	// candidato con el costo al final
 
 	for(int it = 0; it < OPT_ITERACIONES; it++){ 
 		
@@ -42,13 +64,18 @@ vector<int> localSearch2opt(vector<int> ciclo){ // recibe el ciclo generado por 
 				// Si intercambiando A--B por A--C, y C--D por B--D mejora:
 
 				// Esto es basicamente para ahorrarse hacer "costo(candidato)"
-				mejoraDeCosto = costoInicial -  arista_ab - arista_cd + arista_ac + arista_bd;
+				// El costo antes del swap +- las aristas involucradas
+				candidato[n] = candidato[n] -  arista_ab - arista_cd + arista_ac + arista_bd;
 				
-				if(costoInicial > mejoraDeCosto){
-					ciclo = candidato;
+				
+				for(int k = 0; k < SUBVECINIDAD_TAM; k++){
+					if(mejores_ciclos[SUBVECINIDAD_TAM - k][n] > candidato[n]){
+						mejores_ciclos[SUBVECINIDAD_TAM - k] = candidato;
+						break;
+					} // Remplazo por el peor de los que voy guardando
 				}
 			}
 		}
 	}
-	return candidato;
+	return mejores_ciclos;
 }

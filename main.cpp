@@ -47,7 +47,7 @@ int main(int argc, char** argv)
 
     // Ejecutamos el algoritmo y obtenemos su tiempo de ejecución.
 
-	int peso_circuito= 0; // Guardado tras correr los algoritmos
+	int peso_circuito = 0; // Guardado tras correr los algoritmos
 	vector<int> circuito; // Circuito con los vertices recorridos
 
 	int optimum = INFTY;
@@ -82,7 +82,7 @@ int main(int argc, char** argv)
 	clog << total_time << endl;
 
     // Imprimimos el resultado por stdout.
-    cout << circuito.size()<<" "<< peso_circuito << endl;
+    cout << circuito.size() <<" "<< peso_circuito << endl;
 
     for(int i = 0; i < circuito.size(); i++){
     	cout << circuito[i];
