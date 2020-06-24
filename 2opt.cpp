@@ -25,10 +25,27 @@ int costo(vector<int> ciclo){
 }
 
 vector<int> swap(vector<int> c, int i, int j){
-	int a = c[i];
-	c[i] = c[j]; // c[i] = b (c[j])
-	c[j] = a;
-	return c;
+	vector<int> res = c;
+	if(i > j){
+		int a = i;
+		i = j;
+		j = a; 
+	}
+	// i es el menor
+	int it = 0;
+	for(int k = 0; k <= i; k++){
+		res[it] = c[k];
+		it++;	
+	}
+	for(int k = j; k > i; k--){
+		res[it] = c[k];
+		it++;
+	}
+	for(int k = j+1; k < c.size(); k++){
+		res[it] = c[k];
+		it++;
+	}
+	return res;
 }
 
 // Grafo G, tengo matriz de adyacencia
@@ -51,25 +68,24 @@ vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe e
 
 		
 	for(int i = 0; i < n; i++){
-		int arista_ab = matriz_adyacencia[candidato[i]][candidato[(i+1) % n]]; // Arista A--B
-		int arista_preaA = matriz_adyacencia[candidato[i]][candidato[(i-1) % n]]; // Arista A--Anterior A
-		for(int j = 0; j < n; j++){
-			// Para cada par de vertices, me fijo el swappeo
 
+		int costoViejo_i = matriz_adyacencia[i][i+1 % n];
+		for(int j = i+1; j < n; j++){
+			if((j+1) % n == i )break;
 			
-			int arista_cd = matriz_adyacencia[candidato[j]][candidato[(j+1) % n]]; // Arista C--D
-			int arista_preC = matriz_adyacencia[candidato[j]][candidato[(j-1) % n]]; // Arista C-- anterior c
+			int costoViejo_j = matriz_adyacencia[j][j+1 % n];
+
+			// Para cada par de vertices, me fijo el swappeo
 			candidato = swap(ciclo, i, j);
 			//swapeamos a con c
-			int arista_cb = matriz_adyacencia[candidato[i]][candidato[(i+1) % n]];//esta no se puede sacar del ciclo porque es post swap
-			int arista_ad = matriz_adyacencia[candidato[j]][candidato[(j+1) % n]];
-			int arista_preAC = matriz_adyacencia[candidato[i]][candidato[(i-1) % n]];//esta no se puede sacar del ciclo porque es post swap
-			int arista_preCA = matriz_adyacencia[candidato[j]][candidato[(j-1) % n]];
-			// Si intercambiando preA--A--B por preA--C--B, y preC--C--D por preC--A--D mejora:
+
+			int costoNuevo_i = matriz_adyacencia[i][i+1 % n];
+			int costoNuevo_j = matriz_adyacencia[j][j+1 % n];
+
 
 			// Esto es basicamente para ahorrarse hacer "costo(candidato)"
 			// El costo antes del swap +- las aristas involucradas
-			candidato[n] = candidato[n] -  arista_ab - arista_cd + arista_cb + arista_ad - arista_preA - arista_preC + arista_preAC + arista_preCA ;
+			candidato[n] = candidato[n] + costoNuevo_i + costoNuevo_j - costoViejo_i - costoViejo_j;
 			
 			srand(time(NULL));
 			random = rand() % 100;
