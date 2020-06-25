@@ -120,6 +120,7 @@ vector<int> obtenerMejor(vector<vector<int>> vecindad, vector<vector<int>> ultim
 
 vector<int> tabuSearch(int &l){
 	vector<int> ciclo = heurAG(matriz_adyacencia, l);
+	int n = ciclo.size(); // Asumo que viene el ciclo con los n vertices.
 	vector<int> mejorCiclo = ciclo;
 	vector<vector<int>> memoriaCiclos;
 	vector<arista> memoriaEstructura; // Quizas usar otro struct, arista guarda el peso que por
@@ -155,7 +156,7 @@ vector<int> tabuSearch(int &l){
 		}
 
 		// me quedo con el mejor
-		if(costo(ciclo) < costo(mejorCiclo)){
+		if(ciclo[n] < mejorCiclo[n]){
 			mejorCiclo = ciclo;
 		}
 		ITERACIONES_TABU--;
