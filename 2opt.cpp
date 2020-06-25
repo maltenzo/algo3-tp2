@@ -14,7 +14,6 @@ using namespace std;
 
 int SUBVECINIDAD_PORCENTAJE = 10; // Con que porcentaje de la vecindad nos quedamos
 
-int INFTY = 10e6; // Valor para indicar que no hubo solución.
 
 int costo(vector<int> ciclo){
 	int res = 0;

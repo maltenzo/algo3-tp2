@@ -15,6 +15,8 @@ bool MC = false;
 bool MB = false;
 int n, m; // # nodos, # aristas
 vector<vector<int>> matriz_adyacencia;
+bool memoria_ciclos = false;
+bool memoria_estructura = false;
 
 // Si tenemos las heuristicas en archivos separados, incluirlos
 
