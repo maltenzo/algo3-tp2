@@ -14,6 +14,7 @@ using namespace std;
 
 int SUBVECINIDAD_PORCENTAJE = 10; // Con que porcentaje de la vecindad nos quedamos
 int TOP_VECINDAD = 10;
+unsinged int t = 60;
 
 // Funcion para ordenar la subvecindad
 bool cicloMejor(vector<int> C1, vector<int> C2){
@@ -104,14 +105,15 @@ vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe e
 	return mejores_ciclos;
 }
 
-vector<int> obtenerMejor(vector<vector<int>> vecindad){
-	std::sort(vecindad.begin(), vecindad.end(), cicloMejor);
-	vector<vector<int>> top(vecindad.begin(), vecindad.begin() + TOP_VECINDAD);
+vector<int> obtenerMejor(vector<vector<int>> vecindad, vector<vector<int>> ultimosCiclos, vector<aristas> ultimosSwaps){
+	std::sort(vecindad.begin(), vecindad.end(), cicloMejor); // cicloMejor funcion de comparacion
 
-	srand(time(NULL)); //seed random
-	int random = rand() % TOP_VECINDAD;
+	// en principio recibe los dos, y usa uno u otro dependiendo de los booleanos
+	// Quizas en lo que seria el vector de aristas, el campo de "peso" lo usemos como:
+	// A valores mas grandes preferimos esa arista, y mas chico la 'desincentivamos'
 
-	return top[random];
+
+
 }
 
 
@@ -119,20 +121,38 @@ vector<int> obtenerMejor(vector<vector<int>> vecindad){
 vector<int> tabuSearch(int &l){
 	vector<int> ciclo = heurAG(matriz_adyacencia, l);
 	vector<int> mejorCiclo = ciclo;
+	vector<vector<int>> memoriaCiclos;
+	vector<arista> memoriaEstructura; // Quizas usar otro struct, arista guarda el peso que por
+	// el momento no me sirve
+
 	if(memoria_ciclos){
 		// Inicialiar para recordar ciclos
+		// Si guardo ciclos, preciso un arreglo de tamanio 't' con los ultimos
+		memoriaCiclos(t);
 	}
 	else if(memoria_estructura){
 		// Inicializar para recordar aristas
+		memoriaEstructura(t);
 	}
+	int idx_memoria = 0;
 
-	while(ITERACIONES_TABU){
+	while(ITERACIONES_TABU){ // en principio el criterio de parada que sea iteraciones fijas
 		vector<vector<int>> subVecindad = localSearch2opt(solucionInicial, l);
 		// Matriz con ciclos (C...,l(C)))
 		ciclo = obtenerMejor(subVecindad, memoria);
 		// Funcion de aspiracion??
 
+		// Recordar en memoria: o ciclos, o swaps
+
 		// Recordar este mejor ciclo
+		if(memoria_ciclos){
+			memoriaCiclos[idx_memoria] = ciclo;
+			idx_memoria = (idx_memoria + 1) % t; // Guardo los ultimos t
+		}
+		else if(memoria_estructura){
+			// Creo que no podria hacerlo aca eficientemente
+			// Y hay que hacerlo en 2opt?? 
+		}
 
 		// me quedo con el mejor
 		if(costo(ciclo) < costo(mejorCiclo)){

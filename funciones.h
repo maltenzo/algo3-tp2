@@ -33,9 +33,12 @@ extern vector<vector<int>> matriz_adyacencia;
 extern bool MC;
 extern bool MB;
 extern vector<int> ciclo;
+
+//Tabu
 extern int SUBVECINDAD_PORCENTAJE;
 extern bool memoria_ciclos;
 extern bool memoria_estructura;
 extern unsinged int ITERACIONES_TABU;
+extern unsinged int t;
 
 #endif // FUNC_H
