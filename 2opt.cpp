@@ -84,6 +84,9 @@ vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe e
 			candidato = swap(ciclo, i, j);
 			//swapeamos a con c
 
+			        // (L) no creo que es necesario swapear ahora, talvez sea mejor simplemente guardar (p,i,j) p siendo el peso del ciclo con el swap
+
+
 			int costoNuevo_i = matriz_adyacencia[i][i+1 % n];
 			int costoNuevo_j = matriz_adyacencia[j][j+1 % n];
 
@@ -97,8 +100,14 @@ vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe e
 			if(random < SUBVECINIDAD_PORCENTAJE){
 				mejores_ciclos.push_back(candidato)
 			}
+
+			        //(L) No sería mejor mantener los T mejores, más que hacer selección por random?
+			        //    Para eso solo basta poner un if para ver si ya hay T soluciones, y cuando tnegamos más, nos fijamos si hay alguna peor para reemplazar
+
 			candidato[n] = l; // reasigno el costo original del ciclo para que sea consistente el costo de los
 			// candidatos en cada iteracion
+
+			        //(L) reseteamos el peso, pero no volvemos a poner el orden correcto de los vertices
 		}
 	}
 	
@@ -126,6 +135,8 @@ vector<int> tabuSearch(int &l){
 	vector<arista> memoriaEstructura; // Quizas usar otro struct, arista guarda el peso que por
 	// el momento no me sirve
 
+	        //(L) podemos usar el struct de forma poco ortodoxa: en vez de usarlo como una arista, hacer que represente los dos vértices que swapeamos y el cambio de peso
+
 	if(memoria_ciclos){
 		// Inicialiar para recordar ciclos
 		// Si guardo ciclos, preciso un arreglo de tamanio 't' con los ultimos
@@ -138,6 +149,8 @@ vector<int> tabuSearch(int &l){
 	int idx_memoria = 0;
 
 	while(ITERACIONES_TABU){ // en principio el criterio de parada que sea iteraciones fijas
+	            // (L) me gustaría experimentar en el futuro con iteraciones de "no cambio". que opinian?
+
 		vector<vector<int>> subVecindad = localSearch2opt(solucionInicial, l);
 		// Matriz con ciclos (C...,l(C)))
 		ciclo = obtenerMejor(subVecindad, memoria);
@@ -152,7 +165,9 @@ vector<int> tabuSearch(int &l){
 		}
 		else if(memoria_estructura){
 			// Creo que no podria hacerlo aca eficientemente
-			// Y hay que hacerlo en 2opt?? 
+			// Y hay que hacerlo en 2opt??
+			        //(L) creo que con que hagamos lo mismo que con los ciclos, va bien.
+			        //    Eliminar la más vieja y poner una nueva
 		}
 
 		// me quedo con el mejor
