@@ -13,7 +13,12 @@
 using namespace std;
 
 int SUBVECINIDAD_PORCENTAJE = 10; // Con que porcentaje de la vecindad nos quedamos
+int TOP_VECINDAD = 10;
 
+// Funcion para ordenar la subvecindad
+bool cicloMejor(vector<int> C1, vector<int> C2){
+	return C1[C1.size()] < C2[C2.size()];
+}
 
 int costo(vector<int> ciclo){
 	int res = 0;
@@ -97,4 +102,44 @@ vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe e
 	}
 	
 	return mejores_ciclos;
+}
+
+vector<int> obtenerMejor(vector<vector<int>> vecindad){
+	std::sort(vecindad.begin(), vecindad.end(), cicloMejor);
+	vector<vector<int>> top(vecindad.begin(), vecindad.begin() + TOP_VECINDAD);
+
+	srand(time(NULL)); //seed random
+	int random = rand() % TOP_VECINDAD;
+
+	return top[random];
+}
+
+
+
+vector<int> tabuSearch(int &l){
+	vector<int> ciclo = heurAG(matriz_adyacencia, l);
+	vector<int> mejorCiclo = ciclo;
+	if(memoria_ciclos){
+		// Inicialiar para recordar ciclos
+	}
+	else if(memoria_estructura){
+		// Inicializar para recordar aristas
+	}
+
+	while(ITERACIONES_TABU){
+		vector<vector<int>> subVecindad = localSearch2opt(solucionInicial, l);
+		// Matriz con ciclos (C...,l(C)))
+		ciclo = obtenerMejor(subVecindad, memoria);
+		// Funcion de aspiracion??
+
+		// Recordar este mejor ciclo
+
+		// me quedo con el mejor
+		if(costo(ciclo) < costo(mejorCiclo)){
+			mejorCiclo = ciclo;
+		}
+		ITERACIONES_TABU--;
+	}
+
+	return mejorCiclo;
 }

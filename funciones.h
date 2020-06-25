@@ -35,6 +35,7 @@ extern bool MB;
 extern vector<int> ciclo;
 extern int SUBVECINDAD_PORCENTAJE;
 extern bool memoria_ciclos;
-exter bool memoria_estructura;
+extern bool memoria_estructura;
+extern unsinged int ITERACIONES_TABU;
 
 #endif // FUNC_H
