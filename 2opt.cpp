@@ -74,11 +74,11 @@ vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe e
 		
 	for(int i = 0; i < n; i++){
 
-		int costoViejo_i = matriz_adyacencia[i][i+1 % n];
+		int costoViejo_i = matriz_adyacencia[candidato[i]][candidato[i+1 % n]];
 		for(int j = i+1; j < n; j++){
 			if((j+1) % n == i )break;
 			
-			int costoViejo_j = matriz_adyacencia[j][j+1 % n];
+			int costoViejo_j = matriz_adyacencia[candidato[j]][candidato[j+1 % n]];
 
 			// Para cada par de vertices, me fijo el swappeo
 			candidato = swap(ciclo, i, j);
@@ -87,8 +87,8 @@ vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe e
 			        // (L) no creo que es necesario swapear ahora, talvez sea mejor simplemente guardar (p,i,j) p siendo el peso del ciclo con el swap
 
 
-			int costoNuevo_i = matriz_adyacencia[i][i+1 % n];
-			int costoNuevo_j = matriz_adyacencia[j][j+1 % n];
+			int costoNuevo_i = matriz_adyacencia[candidato[i]][candidato[i+1 % n]];
+			int costoNuevo_j = matriz_adyacencia[candidato[j]][candidato[j+1 % n]];
 
 
 			// Esto es basicamente para ahorrarse hacer "costo(candidato)"
