@@ -41,4 +41,6 @@ extern bool memoria_estructura;
 extern unsinged int ITERACIONES_TABU;
 extern unsinged int t;
 
+extern int INFTY;
+
 #endif // FUNC_H

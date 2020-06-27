@@ -15,10 +15,27 @@ using namespace std;
 int SUBVECINIDAD_PORCENTAJE = 10; // Con que porcentaje de la vecindad nos quedamos
 int TOP_VECINDAD = 10;
 unsinged int t = 60;
+int idx_memoria = 0;
+
+
+vector<arista> porcentaje_random(vector<arista> &vecinos, int cantidad){
+	int random;
+	vector<arista> res();
+
+	while(res.size() < cantidad){
+		srand(time(NULL));
+		random = rand() % vecinos.size();
+		res.push_back[random];
+
+		vecinos.erase(vecinos.begin()+random);
+
+	}
+	return res;
+}
 
 // Funcion para ordenar la subvecindad
-bool cicloMejor(vector<int> C1, vector<int> C2){
-	return C1[C1.size()] < C2[C2.size()];
+bool cicloMejor(arista C1, arista C2){
+	return C1.peso < C2.peso;
 }
 
 int costo(vector<int> ciclo){
@@ -55,73 +72,138 @@ vector<int> swap(vector<int> c, int i, int j){
 
 // Grafo G, tengo matriz de adyacencia
 
-vector<vector<int>> localSearch2opt(vector<int> ciclo, const int l){ // recibe el ciclo generado por AGM o alguna otra heuristica
+vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el ciclo generado por AGM o alguna otra heuristica
 	// l es el costo del circuito que me pasan
 	// Pre, el ciclo es de longitud n = matriz_adyacencia.size()
 	
-	int n = ciclo.size();
-	vector<vector<int>> mejores_ciclos(); // Ciclo con costo al final
-	// vector de ciclos, donde en cada ciclo tenemos {v2,v0,v4,...,v9,CostoDeCiclo}
-	vector<int> candidato = ciclo;
-	int mejoraDeCosto;
-	int random;
+	int n = ciclo.size(); 
+	vector<arista> subvecindad(); // Vamos a retornar los vecinos como:
+	// (vi,vj, costo del ciclo al swappear las aristas incidentes a estos)
+	// esto resulta util para cuando querramos guardar las aristas en la lista tabu
+	// y ademas nos evitamos construir ciclos innecesarios, solo al momento de guardarlos en soluciones ya exploradas
+	
+	arista candidato(0, 0, l); // el inicio y fin no representan nada ahora
 
-
-	candidato.push_back(l)
-	// candidato con el costo al final
-
-
-		
 	for(int i = 0; i < n; i++){
 
-		int costoViejo_i = matriz_adyacencia[candidato[i]][candidato[i+1 % n]];
+		int costoViejo_i = matriz_adyacencia[ciclo[i]][ciclo[i+1 % n]];
 		for(int j = i+1; j < n; j++){
 			if((j+1) % n == i )break;
 			
-			int costoViejo_j = matriz_adyacencia[candidato[j]][candidato[j+1 % n]];
+			int costoViejo_j = matriz_adyacencia[ciclo[j]][ciclo[j+1 % n]];
 
-			// Para cada par de vertices, me fijo el swappeo
-			candidato = swap(ciclo, i, j);
-			//swapeamos a con c
+			candidato.inicio = i; 
+			candidato.fin = j;
+			// me guardo las posiciones que swappearia, no los vectores
 
-			        // (L) no creo que es necesario swapear ahora, talvez sea mejor simplemente guardar (p,i,j) p siendo el peso del ciclo con el swap
-
-
-			int costoNuevo_i = matriz_adyacencia[candidato[i]][candidato[i+1 % n]];
-			int costoNuevo_j = matriz_adyacencia[candidato[j]][candidato[j+1 % n]];
+			int costoNuevo_i = matriz_adyacencia[ciclo[i]][ciclo[j]];
+			int costoNuevo_j = matriz_adyacencia[ciclo[i+1 % n]][ciclo[j+1 % n]];
 
 
 			// Esto es basicamente para ahorrarse hacer "costo(candidato)"
 			// El costo antes del swap +- las aristas involucradas
-			candidato[n] = candidato[n] + costoNuevo_i + costoNuevo_j - costoViejo_i - costoViejo_j;
-			
-			srand(time(NULL));
-			random = rand() % 100;
-			if(random < SUBVECINIDAD_PORCENTAJE){
-				mejores_ciclos.push_back(candidato)
-			}
+			candidato.peso = candidato.peso + costoNuevo_i + costoNuevo_j - costoViejo_i - costoViejo_j;
+			//recordar que peso en este contexto no representa el peso de la arista sino el costo total del
+			//ciclo tras swappear candidato.inicio y candidato.fin
 
-			        //(L) No sería mejor mantener los T mejores, más que hacer selección por random?
-			        //    Para eso solo basta poner un if para ver si ya hay T soluciones, y cuando tnegamos más, nos fijamos si hay alguna peor para reemplazar
+			subvecindad.push_back(candidato) // es la vecindad completa
 
-			candidato[n] = l; // reasigno el costo original del ciclo para que sea consistente el costo de los
+			candidato.peso = l; // reasigno el costo original del ciclo para que sea consistente el costo de los
 			// candidatos en cada iteracion
 
-			        //(L) reseteamos el peso, pero no volvemos a poner el orden correcto de los vertices
 		}
 	}
 	
-	return mejores_ciclos;
+
+	subvecindad = porcentaje_random(&subvecindad, (subvecindad.size()*SUBVECINIDAD_PORCENTAJE)/100 );
+	// SUBVECINDAD_PORCENTAJE es un numero entre 1 y 100. 
+	
+	return subvecindad;
 }
 
-vector<int> obtenerMejor(vector<vector<int>> vecindad, vector<vector<int>> ultimosCiclos, vector<aristas> ultimosSwaps){
-	std::sort(vecindad.begin(), vecindad.end(), cicloMejor); // cicloMejor funcion de comparacion
+vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &costoCiclo,
+ vector<vector<int>> &memoriaCiclos, vector<aristas> &memoriaSwaps){
+	
 
-	// en principio recibe los dos, y usa uno u otro dependiendo de los booleanos
-	// Quizas en lo que seria el vector de aristas, el campo de "peso" lo usemos como:
-	// A valores mas grandes preferimos esa arista, y mas chico la 'desincentivamos'
+	//std::sort(subvecindad.begin(), subvecindad.end(), mejorCostoVecinos); // mejorCostoVecinos funcion de comparacion
+	// las ordeno por costo
+	
+	//por ciclos
+	vector<int> mejor;
+	vector<int> vecino;
+	
+	int costo_mejor = INFTY; // guardo el costo del mejor ciclo que no este en la LTabu
+	// por aristas
+	arista elegida;
+	arista mejor_arista;
+	int i; int j; // estos los necesito si voy por aritas para reconstruir el mejor ciclo y devolverlo
 
 
+	int costoTrasSwap;	
+		
+		for(int k = 0; k < subvecindad.size(); k++){ // recorro la subvecindad
+			elegida = subvecindad[k];
+			
+			if(memoria_ciclos){ // tengo que construir los ciclos con el swap
+				// descarto por tabu y su costo
+
+
+				vecino = swap(ciclo, elegida.inicio, elegida.fin);
+				if(find(ultimosCiclos.begin(), ultimosCiclos.end(), vecino) != ultimosCiclos.end()) break;
+				// si el vecino esta sigo esta en los explorados, sigo con el siguiente
+
+				if(elegida.peso < costo_mejor){
+					mejor = vecino;
+					costo_mejor = elegida.peso;
+				}
+			}
+			else if(memoria_estructura){
+				// descarto por tabu y su costo
+
+				costoTrasSwap = elegida.peso;
+				
+				int indice_i = elegida.inicio;
+				int indice_j = elegida.fin;
+
+				elegida.inicio = ciclo[elegida.inicio];
+				elegida.fin = ciclo[elegida.fin]; // esto es pq me guarde los i, j y no los v_i v_j
+				elegida.peso = matriz_adyacencia[elegida.inicio][elegida.fin];// la hago consistente
+
+				// en memoria las tengo efectivamente como (vi, vj, peso((vi,vj)))
+				// ahora la busco en memoria
+				
+				if(find(ultimosSwaps.begin(), ultimosSwaps.end(), elegida) != ultimosSwaps.end()) break;
+				
+				arista inversa(elegida.fin, elegida.inicio, elegida.peso);
+				if(find(ultimosSwaps.begin(), ultimosSwaps.end(), inversa) != ultimosSwaps.end()) break;
+
+				if(costoTrasSwap < costo_mejor){
+					mejor_arista = elegida;
+					costo_mejor = costoTrasSwap;
+					i = indice_i;
+					j = indice_j;
+				}
+
+
+			}
+		}
+		// Recordar en memoria: o ciclos, o swaps
+
+		// Recordar este mejor ciclo
+		if(memoria_ciclos){
+			memoriaCiclos[idx_memoria] = mejor;
+			idx_memoria = (idx_memoria + 1) % t; // Guardo los ultimos t
+		}
+		else if(memoria_estructura){
+			memoriaSwaps[idx_memoria] = mejor_arista;
+			idx_memoria = (idx_memoria + 1) % t;
+			arista mejor_arista2(ciclo[i+1 % ciclo.size()], [ciclo[j+1 % ciclo.size()]], matriz_adyacencia[ciclo[i+1 % ciclo.size()]][ciclo[j+1 % ciclo.size()]])
+			memoriaSwaps[idx_memoria] = mejor_arista2;
+			idx_memoria = (idx_memoria + 1) % t;
+		}
+		mejor = swap(ciclo, i, j);
+		costoCiclo = costo_mejor;
+		return mejor;
 
 }
 
@@ -130,10 +212,11 @@ vector<int> obtenerMejor(vector<vector<int>> vecindad, vector<vector<int>> ultim
 vector<int> tabuSearch(int &l){
 	vector<int> ciclo = heurAG(matriz_adyacencia, l);
 	int n = ciclo.size(); // Asumo que viene el ciclo con los n vertices.
+
 	vector<int> mejorCiclo = ciclo;
+	int costoCiclo = l;
 	vector<vector<int>> memoriaCiclos;
-	vector<arista> memoriaEstructura; // Quizas usar otro struct, arista guarda el peso que por
-	// el momento no me sirve
+	vector<arista> memoriaEstructura; // Usamos arista como: (vi,vj, peso del ciclo )
 
 	        //(L) podemos usar el struct de forma poco ortodoxa: en vez de usarlo como una arista, hacer que represente los dos vértices que swapeamos y el cambio de peso
 
@@ -146,33 +229,26 @@ vector<int> tabuSearch(int &l){
 		// Inicializar para recordar aristas
 		memoriaEstructura(t);
 	}
-	int idx_memoria = 0;
+	
 
 	while(ITERACIONES_TABU){ // en principio el criterio de parada que sea iteraciones fijas
 	            // (L) me gustaría experimentar en el futuro con iteraciones de "no cambio". que opinian?
 
-		vector<vector<int>> subVecindad = localSearch2opt(solucionInicial, l);
-		// Matriz con ciclos (C...,l(C)))
-		ciclo = obtenerMejor(subVecindad, memoria);
+		vector<arista> subVecindad = localSearch2opt(ciclo, l);
+		// Matriz con los swaps y el costo al hacerlo (vi, vj, costo)
+		
+		ciclo = obtenerMejor(subVecindad, ciclo, &costoCiclo, &memoriaCiclos, &memoriaEstructura); // en esta funcion se reconstruye el ciclo
+		// Preciso pasarle el ciclo de esta iteracion para poder construirlo a partir de los swaps
+
+		// Costo ciclo guarda el costo del ciclo elegido
+
 		// Funcion de aspiracion??
 
-		// Recordar en memoria: o ciclos, o swaps
-
-		// Recordar este mejor ciclo
-		if(memoria_ciclos){
-			memoriaCiclos[idx_memoria] = ciclo;
-			idx_memoria = (idx_memoria + 1) % t; // Guardo los ultimos t
-		}
-		else if(memoria_estructura){
-			// Creo que no podria hacerlo aca eficientemente
-			// Y hay que hacerlo en 2opt??
-			        //(L) creo que con que hagamos lo mismo que con los ciclos, va bien.
-			        //    Eliminar la más vieja y poner una nueva
-		}
-
 		// me quedo con el mejor
-		if(ciclo[n] < mejorCiclo[n]){
+		if(costoCiclo < l){
 			mejorCiclo = ciclo;
+			l = costoCiclo;
+
 		}
 		ITERACIONES_TABU--;
 	}
