@@ -22,7 +22,7 @@ vector<arista> porcentaje_random(vector<arista> &vecinos, int cantidad){
 	int random;
 	vector<arista> res();
 
-	while(res.size() < cantidad){
+	while(cantidad--){
 		srand(time(NULL));
 		random = rand() % vecinos.size();
 		res.push_back[random];
