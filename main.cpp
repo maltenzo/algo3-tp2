@@ -64,10 +64,10 @@ int main(int argc, char** argv)
 	     circuito = heurAG(matriz_adyacencia, peso_circuito);
 	 }else if(algoritmo == "T_AGM"){
 	     circuito = test_AGM_1();
-         peso_circuito = circuito[1];
-         vector<int> temp(circuito[0],0);
-         for(int i = 2; i<circuito.size();i++){
-             temp[i-2] = circuito[i];
+         peso_circuito = circuito[circuito.size()-1];
+         vector<int> temp(circuito.size()-1,0);
+         for(int i = 0; i<circuito.size()-1;i++){
+             temp[i] = circuito[i];
          }
          circuito = temp;
 	 }// else if (algoritmo =="")..

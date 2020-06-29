@@ -51,10 +51,21 @@ list<vector<int>> vec2list(vector<vector<int>> &X) {
     return res;
 }
 
+vector<vector<int>> matrizAVector(vector<vector<int>> matriz){
+    vector<int> vecAristas;
+
+    for(int i = 0; i < matriz.size(); i++){
+
+        for (int j = i+1; j < matriz.size(); j++){
+            vecAristas.push_back(matriz[i][j]);
+        }
+    }
+}
 vector<int> golosoArista(int V, vector<vector<int>> X){
-    std::sort(X.begin(), X.end(), &mayorQue);
+    vector<vector<int>> vecAristas = matrizAVector(X); //paso de matriz a vectores de aristas
+    std::sort(vecAristas.begin(), vecAristas.end(), &mayorQue); // sort las aristas por peso
     list<vector<int>> aristasRestantes = vec2list(X); // igualar a X ordenada
-    vector<int> estadoVertices(V, 0);
+    vector<int> estadoVertices(V, 0); // aca marco si cuanats veces se usa cada vertice
     vector<vector<int>> aristasH;
 
     for(int i = 0; i < V; i++){
