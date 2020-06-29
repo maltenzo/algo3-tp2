@@ -52,12 +52,14 @@ list<vector<int>> vec2list(vector<vector<int>> &X) {
 }
 
 vector<vector<int>> matrizAVector(vector<vector<int>> matriz){
-    vector<int> vecAristas;
+    vector<vector<int>> vecAristas;
 
     for(int i = 0; i < matriz.size(); i++){
 
         for (int j = i+1; j < matriz.size(); j++){
-            vecAristas.push_back(matriz[i][j]);
+            vector<int> vec;
+            vec.push_back(i); vec.push_back(j); vec.push_back(matriz[i][j])
+            vecAristas.push_back(vec);
         }
     }
     return vecAristas;
