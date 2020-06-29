@@ -13,6 +13,7 @@ struct arista{ //representa una arista
     int fin;
     int peso;
     arista(int inicio, int fin, int peso): inicio(inicio), fin(fin), peso(peso){};
+    arista(): inicio(0), fin(0), peso(0){};
 };
 
 //agm.cpp
@@ -38,8 +39,8 @@ extern vector<int> ciclo;
 extern int SUBVECINDAD_PORCENTAJE;
 extern bool memoria_ciclos;
 extern bool memoria_estructura;
-extern unsinged int ITERACIONES_TABU;
-extern unsinged int t;
+extern unsigned int ITERACIONES_TABU;
+extern unsigned int t;
 
 extern int INFTY;
 
