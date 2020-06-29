@@ -60,6 +60,7 @@ vector<vector<int>> matrizAVector(vector<vector<int>> matriz){
             vecAristas.push_back(matriz[i][j]);
         }
     }
+    return vecAristas;
 }
 vector<int> golosoArista(vector<vector<int>> X){
     int V = X.size();
