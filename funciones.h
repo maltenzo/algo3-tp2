@@ -39,6 +39,7 @@ extern bool MB;
 extern vector<int> ciclo;
 
 //Tabu
+vector<int> tabuSearch(int &l);
 extern int SUBVECINDAD_PORCENTAJE;
 extern bool memoria_ciclos;
 extern bool memoria_estructura;
