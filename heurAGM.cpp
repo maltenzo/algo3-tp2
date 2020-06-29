@@ -129,17 +129,19 @@ vector<arista> kruskal(grafo g){ //creo un AGM con krustal
 }
 
 //parte recursia de DFS
-void dfs_recu(vector<arista> t, vector<int>& orden, int padre, int& nro_orden, int ultima){ //orden es la lista del orden de los vértices, padre es el vertice padre
+void dfs_recu(vector<arista> t, vector<int>& orden, int padre, int& nro_orden, vector<int>& visitados){ //orden es la lista del orden de los vértices, padre es el vertice padre
     for(int i = 0; i<t.size() && nro_orden<orden.size(); i++){ //en cada recursion, reviso todas las aristas para buscar una con el padre
         arista e = t[i];
-        if(e.inicio == padre && e.fin != ultima){                                  //si encuentro una
+        if(e.inicio == padre && !visitados[e.fin]){                                  //si encuentro una
             orden[nro_orden] = e.fin;                           //agrego el otro vértice al orden
             nro_orden++;
-            dfs_recu(t,orden,e.fin,nro_orden,padre);           //sigo la rama por ese vértice
-        }else if(e.fin == padre && e.inicio != ultima){
+            visitados[e.fin] = 1;
+            dfs_recu(t,orden,e.fin,nro_orden,visitados);           //sigo la rama por ese vértice
+        }else if(e.fin == padre &&  !visitados[e.inicio]){
             orden[nro_orden] = e.inicio;
             nro_orden++;
-            dfs_recu(t,orden,e.fin,nro_orden,padre);
+            visitados[e.inicio] = 1;
+            dfs_recu(t,orden,e.inicio,nro_orden,visitados);
         }
     }
     return;
@@ -152,7 +154,9 @@ vector<int> dfs(vector<arista> t){
     vector<int> orden(t.size()+1,-1);  //creo la lista de vértices en orden de recorrido
     orden[nro_orden] = padre;                   //el primero siempre es el vértice 1 (representado como 0 para usar de indice)
     nro_orden++;
-    dfs_recu(t,orden,padre,nro_orden,-1);   //llamo a la recursiva
+    vector<int> visitados(t.size()+1, 0); //lista de vértices que me dice si estásn considerados o no en el orden
+    visitados[padre] = 1;
+    dfs_recu(t,orden,padre,nro_orden,visitados);   //llamo a la recursiva
     return orden;
 }
 
