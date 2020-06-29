@@ -97,7 +97,7 @@ vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el cic
 			// me guardo las posiciones que swappearia, no los vectores
 
 			int costoNuevo_i = matriz_adyacencia[ciclo[i]][ciclo[j]];
-			int costoNuevo_j = matriz_adyacencia[ciclo[i+1 % n]][ciclo[(j+1) % n]];
+			int costoNuevo_j = matriz_adyacencia[ciclo[(i+1) % n]][ciclo[(j+1) % n]];
 
 
 			// Esto es basicamente para ahorrarse hacer "costo(candidato)"
