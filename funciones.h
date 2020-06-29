@@ -14,6 +14,9 @@ struct arista{ //representa una arista
     int peso;
     arista(int inicio, int fin, int peso): inicio(inicio), fin(fin), peso(peso){};
     arista(): inicio(0), fin(0), peso(0){};
+    bool operator==(const arista &e) const{
+    	return (inicio == e.inicio) && (fin == e.fin) && (peso == e.peso);
+    }
 };
 
 //agm.cpp
