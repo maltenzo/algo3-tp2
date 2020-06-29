@@ -14,7 +14,7 @@ using namespace std;
 
 int SUBVECINIDAD_PORCENTAJE = 10; // Con que porcentaje de la vecindad nos quedamos
 int TOP_VECINDAD = 10;
-unsinged int t = 60;
+unsigned int t = 60;
 int idx_memoria = 0;
 
 
@@ -25,7 +25,7 @@ vector<arista> porcentaje_random(vector<arista> &vecinos, int cantidad){
 	while(cantidad--){
 		srand(time(NULL));
 		random = rand() % vecinos.size();
-		res.push_back[random];
+		res.push_back(vecinos[random]);
 
 		vecinos.erase(vecinos.begin()+random);
 
@@ -122,7 +122,7 @@ vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el cic
 }
 
 vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &costoCiclo,
- vector<vector<int>> &memoriaCiclos, vector<aristas> &memoriaSwaps){
+ vector<vector<int>> &ultimosCiclos, vector<arista> &ultimosSwaps){
 	
 
 	//std::sort(subvecindad.begin(), subvecindad.end(), mejorCostoVecinos); // mejorCostoVecinos funcion de comparacion
@@ -134,7 +134,7 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 	
 	int costo_mejor = INFTY; // guardo el costo del mejor ciclo que no este en la LTabu
 	// por aristas
-	arista elegida;
+	arista elegida(0,0,0);
 	arista mejor_arista;
 	int i; int j; // estos los necesito si voy por aritas para reconstruir el mejor ciclo y devolverlo
 
@@ -191,14 +191,14 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 
 		// Recordar este mejor ciclo
 		if(memoria_ciclos){
-			memoriaCiclos[idx_memoria] = mejor;
+			ultimosCiclos[idx_memoria] = mejor;
 			idx_memoria = (idx_memoria + 1) % t; // Guardo los ultimos t
 		}
 		else if(memoria_estructura){
-			memoriaSwaps[idx_memoria] = mejor_arista;
+			ultimosSwaps[idx_memoria] = mejor_arista;
 			idx_memoria = (idx_memoria + 1) % t;
-			arista mejor_arista2(ciclo[i+1 % ciclo.size()], [ciclo[j+1 % ciclo.size()]], matriz_adyacencia[ciclo[i+1 % ciclo.size()]][ciclo[j+1 % ciclo.size()]])
-			memoriaSwaps[idx_memoria] = mejor_arista2;
+			arista mejor_arista2(ciclo[i+1 % ciclo.size()], ciclo[j+1 % ciclo.size()], matriz_adyacencia[ciclo[i+1 % ciclo.size()]][ciclo[j+1 % ciclo.size()]]);
+			ultimosSwaps[idx_memoria] = mejor_arista2;
 			idx_memoria = (idx_memoria + 1) % t;
 		}
 		mejor = swap(ciclo, i, j);
@@ -223,11 +223,11 @@ vector<int> tabuSearch(int &l){
 	if(memoria_ciclos){
 		// Inicialiar para recordar ciclos
 		// Si guardo ciclos, preciso un arreglo de tamanio 't' con los ultimos
-		memoriaCiclos(t);
+		memoriaCiclos.resize(t);
 	}
 	else if(memoria_estructura){
 		// Inicializar para recordar aristas
-		memoriaEstructura(t);
+		memoriaEstructura.resize(t);
 	}
 	
 
@@ -237,7 +237,7 @@ vector<int> tabuSearch(int &l){
 		vector<arista> subVecindad = localSearch2opt(ciclo, l);
 		// Matriz con los swaps y el costo al hacerlo (vi, vj, costo)
 		
-		ciclo = obtenerMejor(subVecindad, ciclo, &costoCiclo, &memoriaCiclos, &memoriaEstructura); // en esta funcion se reconstruye el ciclo
+		ciclo = obtenerMejor(subVecindad, ciclo, costoCiclo, memoriaCiclos, memoriaEstructura); // en esta funcion se reconstruye el ciclo
 		// Preciso pasarle el ciclo de esta iteracion para poder construirlo a partir de los swaps
 
 		// Costo ciclo guarda el costo del ciclo elegido
