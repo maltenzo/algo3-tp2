@@ -61,7 +61,8 @@ vector<vector<int>> matrizAVector(vector<vector<int>> matriz){
         }
     }
 }
-vector<int> golosoArista(int V, vector<vector<int>> X){
+vector<int> golosoArista(vector<vector<int>> X){
+    int V = X.size();
     vector<vector<int>> vecAristas = matrizAVector(X); //paso de matriz a vectores de aristas
     std::sort(vecAristas.begin(), vecAristas.end(), &mayorQue); // sort las aristas por peso
     list<vector<int>> aristasRestantes = vec2list(X); // igualar a X ordenada
@@ -77,9 +78,9 @@ vector<int> golosoArista(int V, vector<vector<int>> X){
 }
 /* lo que use pa testear
 int main() {
-    int V = 4;
-    vector<vector<int>> X = {{1,2,10},{1,3,15},{1,4,20},{2,3,35},{2,4,25},{3,4,30}};
-    vector<vector<int>> camino = golosoArista(V,X);
+    //int V = 4;
+    //vector<vector<int>> X = {{1,2,10},{1,3,15},{1,4,20},{2,3,35},{2,4,25},{3,4,30}};
+    //vector<int> camino = golosoArista(V,X);
     return 0;
 }
 */
