@@ -10,6 +10,7 @@
 using namespace std;
 
 vector<int> test_AGM_1();
+vector<int> test_AGM_2();
 
 
 #endif //TP2_TESTS_H

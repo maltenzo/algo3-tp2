@@ -35,4 +35,8 @@ vector<int> test_AGM_2(){
     g[1][4] = 3;
     g[2][3] = 5;
     g[3][4] = 5;
+    int peso = 0;
+    vector<int> test_agm = heurAG(g,peso);
+    test_agm.push_back(peso);
+    return test_agm;
 }
