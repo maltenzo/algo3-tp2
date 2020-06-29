@@ -20,7 +20,7 @@ int idx_memoria = 0;
 
 vector<arista> porcentaje_random(vector<arista> &vecinos, int cantidad){
 	int random;
-	vector<arista> res();
+	vector<arista> res;
 
 	while(cantidad--){
 		srand(time(NULL));
@@ -77,7 +77,7 @@ vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el cic
 	// Pre, el ciclo es de longitud n = matriz_adyacencia.size()
 	
 	int n = ciclo.size(); 
-	vector<arista> subvecindad(); // Vamos a retornar los vecinos como:
+	vector<arista> subvecindad; // Vamos a retornar los vecinos como:
 	// (vi,vj, costo del ciclo al swappear las aristas incidentes a estos)
 	// esto resulta util para cuando querramos guardar las aristas en la lista tabu
 	// y ademas nos evitamos construir ciclos innecesarios, solo al momento de guardarlos en soluciones ya exploradas
@@ -106,7 +106,7 @@ vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el cic
 			//recordar que peso en este contexto no representa el peso de la arista sino el costo total del
 			//ciclo tras swappear candidato.inicio y candidato.fin
 
-			subvecindad.push_back(candidato) // es la vecindad completa
+			subvecindad.push_back(candidato); // es la vecindad completa
 
 			candidato.peso = l; // reasigno el costo original del ciclo para que sea consistente el costo de los
 			// candidatos en cada iteracion
@@ -115,7 +115,7 @@ vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el cic
 	}
 	
 
-	subvecindad = porcentaje_random(&subvecindad, (subvecindad.size()*SUBVECINIDAD_PORCENTAJE)/100 );
+	subvecindad = porcentaje_random(subvecindad, (subvecindad.size()*SUBVECINIDAD_PORCENTAJE)/100 );
 	// SUBVECINDAD_PORCENTAJE es un numero entre 1 y 100. 
 	
 	return subvecindad;
