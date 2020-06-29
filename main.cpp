@@ -17,7 +17,7 @@ int n, m; // # nodos, # aristas
 vector<vector<int>> matriz_adyacencia;
 bool memoria_ciclos = false;
 bool memoria_estructura = false;
-unsinged int ITERACIONES_TABU = 100;
+unsigned int ITERACIONES_TABU = 100;
 
 
 // Si tenemos las heuristicas en archivos separados, incluirlos

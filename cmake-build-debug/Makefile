@@ -123,6 +123,33 @@ tp2/fast:
 	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/build
 .PHONY : tp2/fast
 
+2opt.o: 2opt.cpp.o
+
+.PHONY : 2opt.o
+
+# target to build an object file
+2opt.cpp.o:
+	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/2opt.cpp.o
+.PHONY : 2opt.cpp.o
+
+2opt.i: 2opt.cpp.i
+
+.PHONY : 2opt.i
+
+# target to preprocess a source file
+2opt.cpp.i:
+	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/2opt.cpp.i
+.PHONY : 2opt.cpp.i
+
+2opt.s: 2opt.cpp.s
+
+.PHONY : 2opt.s
+
+# target to generate assembly for a file
+2opt.cpp.s:
+	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/2opt.cpp.s
+.PHONY : 2opt.cpp.s
+
 Insercion.o: Insercion.cpp.o
 
 .PHONY : Insercion.o
@@ -240,6 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... tp2"
 	@echo "... edit_cache"
+	@echo "... 2opt.o"
+	@echo "... 2opt.i"
+	@echo "... 2opt.s"
 	@echo "... Insercion.o"
 	@echo "... Insercion.i"
 	@echo "... Insercion.s"

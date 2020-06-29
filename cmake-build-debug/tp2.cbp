@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/2opt.cpp">
+			<Option target="tp2"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/Insercion.cpp">
 			<Option target="tp2"/>
 		</Unit>
