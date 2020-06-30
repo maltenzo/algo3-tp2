@@ -8,7 +8,7 @@ bool mayorQue(vector<int> aristaA, vector<int> aristaB){
     return aristaA[2] < aristaB[2];
 }
 
-vector<int> armarCircuito(vector<vector<int>> &arVec){ //arma respuesta de aristas elegidas
+vector<int> armarCircuito(vector<vector<int>> &arVec, int & peso_circ){ //arma respuesta de aristas elegidas
     vector<int> circuito(arVec.size(), -1);
     int peso = 0; int vertices = arVec.size(); vector<int> res;
     for(vector<int> x : arVec){
@@ -16,8 +16,7 @@ vector<int> armarCircuito(vector<vector<int>> &arVec){ //arma respuesta de arist
         if(circuito[x[0]-1] != -1){circuito[x[1]-1] = x[0]-1;}
         else circuito[x[0]-1] = x[1]-1;
     }
-
-    res.push_back(vertices);res.push_back(peso);
+    peso_circ = peso;
     int j = -1;
     while(j != 0){
         if(j == -1){j = 0;}
@@ -62,11 +61,11 @@ vector<vector<int>> matrizAVector(vector<vector<int>> matriz){
     }
     return vecAristas;
 }
-vector<int> golosoArista(vector<vector<int>> X){
+vector<int> golosoArista(vector<vector<int>> X, int& peso_circ){
     int V = X.size();
     vector<vector<int>> vecAristas = matrizAVector(X); //paso de matriz a vectores de aristas
     std::sort(vecAristas.begin(), vecAristas.end(), &mayorQue); // sort las aristas por peso
-    list<vector<int>> aristasRestantes = vec2list(X); // igualar a X ordenada
+    list<vector<int>> aristasRestantes = vec2list(vecAristas); // igualar a vecAristas ordenada
     vector<int> estadoVertices(V, 0); // aca marco si cuanats veces se usa cada vertice
     vector<vector<int>> aristasH;
 
@@ -75,7 +74,7 @@ vector<int> golosoArista(vector<vector<int>> X){
         actualizarEstados(e, estadoVertices, aristasRestantes);
         aristasH.push_back(e);
     }
-    return armarCircuito(aristasH);
+    return armarCircuito(aristasH, peso_circ);
 }
 /* lo que use pa testear
 int main() {
