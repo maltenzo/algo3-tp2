@@ -213,6 +213,7 @@ vector<int> tabuSearch(int &l){
 	vector<int> ciclo = heurAG(matriz_adyacencia, l);
 	int n = ciclo.size(); // Asumo que viene el ciclo con los n vertices.
 
+	for(int i = 0; i < n; i++)ciclo[i]--;
 	vector<int> mejorCiclo = ciclo;
 	int costoCiclo = l;
 	vector<vector<int>> memoriaCiclos;
