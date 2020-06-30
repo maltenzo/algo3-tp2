@@ -1,3 +1,0 @@
-/home/enzo/Escritorio/Algo3/tp2-github/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/enzo/Escritorio/Algo3/tp2-github/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/enzo/Escritorio/Algo3/tp2-github/cmake-build-debug/CMakeFiles/tp2_github.dir
