@@ -21,7 +21,9 @@ int idx_memoria = 0;
 vector<arista> porcentaje_random(vector<arista> &vecinos, int cantidad){
 	int random;
 	vector<arista> res;
-
+    if(cantidad == 0){
+        cantidad = 1;
+    }
 	while(cantidad--){
 		srand(time(NULL));
 		random = rand() % vecinos.size();
@@ -115,9 +117,21 @@ vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el cic
 	}
 	
 
-	subvecindad = porcentaje_random(subvecindad, (subvecindad.size()*SUBVECINIDAD_PORCENTAJE)/100 );
+	int cantidad = subvecindad.size(); //cantidad de vecinos en la subvecinidad
+	if(cantidad > 20){                  //si tenemos más de 20
+        srand(time(0));       //queremos usar un porcentaje random
+	    int random = rand() % 101;
+	    if(random < 30){                //entre 30%
+	        random += 30;
+	    }else if (random > 80){         //y 80%
+	        random -= 20;
+	    }
+	    cantidad = cantidad*random/100;
+	}
+
+	//subvecindad = porcentaje_random(subvecindad, (subvecindad.size()*SUBVECINIDAD_PORCENTAJE)/100 );
 	// SUBVECINDAD_PORCENTAJE es un numero entre 1 y 100. 
-	
+    subvecindad = porcentaje_random(subvecindad, cantidad );
 	return subvecindad;
 }
 
@@ -136,7 +150,7 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 	// por aristas
 	arista elegida(0,0,0);
 	arista mejor_arista;
-	int i; int j; // estos los necesito si voy por aritas para reconstruir el mejor ciclo y devolverlo
+	int i=0; int j=0; // estos los necesito si voy por aritas para reconstruir el mejor ciclo y devolverlo
 
 
 	int costoTrasSwap;	
@@ -155,6 +169,8 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 				if(elegida.peso < costo_mejor){
 					mejor = vecino;
 					costo_mejor = elegida.peso;
+					i = elegida.inicio;
+					j = elegida.fin;
 				}
 			}
 			else if(memoria_estructura){
@@ -202,7 +218,9 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 			idx_memoria = (idx_memoria + 1) % t;
 		}
 		mejor = swap(ciclo, i, j);
-		costoCiclo = costo_mejor;
+		if(i!=j){
+            costoCiclo = costo_mejor;
+		}
 		return mejor;
 
 }
@@ -235,9 +253,9 @@ vector<int> tabuSearch(int &l){
 	while(ITERACIONES_TABU){ // en principio el criterio de parada que sea iteraciones fijas
 	            // (L) me gustaría experimentar en el futuro con iteraciones de "no cambio". que opinian?
 
-		vector<arista> subVecindad = localSearch2opt(ciclo, l);
+		vector<arista> subVecindad = localSearch2opt(ciclo, costoCiclo);
 		// Matriz con los swaps y el costo al hacerlo (vi, vj, costo)
-		
+
 		ciclo = obtenerMejor(subVecindad, ciclo, costoCiclo, memoriaCiclos, memoriaEstructura); // en esta funcion se reconstruye el ciclo
 		// Preciso pasarle el ciclo de esta iteracion para poder construirlo a partir de los swaps
 
@@ -251,7 +269,12 @@ vector<int> tabuSearch(int &l){
 			l = costoCiclo;
 
 		}
+
 		ITERACIONES_TABU--;
+	}
+
+	for(int i=0; i<mejorCiclo.size(); i++){
+	    mejorCiclo[i]++;
 	}
 
 	return mejorCiclo;

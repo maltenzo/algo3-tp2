@@ -51,8 +51,13 @@ vector<int> test_TABU_2(int& peso){
     g[2][3] = 6;
     g[2][4] = 2;
     g[3][4] = 6;
-    g[4][1] = 4;
-    g[3][0] = 1;
+    g[4][1] = 3;
+    g[3][0] = 5;
+    for(int i = 0; i<g.size();i++){
+        for(int j = i+1; j<g.size();j++){
+            g[j][i] = g[i][j];
+        }
+    }
     peso = 0;
     matriz_adyacencia = g;
     memoria_ciclos = true;
