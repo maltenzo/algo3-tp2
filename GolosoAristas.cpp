@@ -54,14 +54,13 @@ vector<vector<int>> matrizAVector(vector<vector<int>> matriz){
     vector<vector<int>> vecAristas;
 
     for(int i = 0; i < matriz.size(); i++){
-
         for (int j = i+1; j < matriz.size(); j++){
             vecAristas.push_back({i+1,j+1,matriz[i][j]});
         }
     }
     return vecAristas;
 }
-vector<int> golosoArista(vector<vector<int>> X, int& peso_circ){
+vector<int> golosoArista(vector<vector<int>>& X, int& peso_circ){
     int V = X.size();
     vector<vector<int>> vecAristas = matrizAVector(X); //paso de matriz a vectores de aristas
     std::sort(vecAristas.begin(), vecAristas.end(), &mayorQue); // sort las aristas por peso
