@@ -1,5 +1,5 @@
 #include "funciones.h"
-
+#include <iostream>
 //despues lo adapto para que sea compatible con el main
 vector<int> ciclo={0, 1, 2}; //empiezo con un ciclo base
 int anterior_MB = 0;
