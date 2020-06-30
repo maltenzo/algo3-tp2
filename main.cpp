@@ -7,6 +7,7 @@
 #include <set>
 #include <map>
 #include "funciones.h"
+#include "GolosoAristas.cpp"
 
 using namespace std;
 
@@ -25,7 +26,7 @@ unsigned int ITERACIONES_TABU = 100;
 int main(int argc, char** argv)
 {
 	// Leemos el parametro que indica el algoritmo a ejecutar.
-	map<string, string> algoritmos_implementados = {{"ins", "insercion"},{"agm", "heurAGM"},{"T_AGM","Tests AGM"},{"T_AGM_2", "otro Test AGM"}, {"T_TABU", "Test Tabu Search"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
+	map<string, string> algoritmos_implementados = {{"ins", "insercion"},{"agm", "heurAGM"},{"T_AGM","Tests AGM"},{"T_AGM_2", "otro Test AGM"}, {"T_TABU", "Test Tabu Search"}, {"GA", "golosoArista"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
 
 	// Verificar que el algoritmo pedido exista.
 	if (argc < 2 || algoritmos_implementados.find(argv[1]) == algoritmos_implementados.end())
@@ -82,6 +83,8 @@ int main(int argc, char** argv)
 	 else if(algoritmo == "T_TABU"){
 	 	circuito = tabuSearch(peso_circuito);
 
+	 } else if(algoritmo == "GA"){
+	     circuito = golosoArista(matriz_adyacencia, peso_circuito);
 	 }// else if (algoritmo =="")..
 
 
