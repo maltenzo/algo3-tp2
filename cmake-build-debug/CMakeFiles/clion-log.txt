@@ -1,4 +1,4 @@
-C:\Users\Usuario\AppData\Local\JetBrains\CLion2020.1\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub"
+/snap/clion/114/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/enzo/Escritorio/Algo3/tp2-github
 -- Configuring done
 -- Generating done
--- Build files have been written to: /cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug
+-- Build files have been written to: /home/enzo/Escritorio/Algo3/tp2-github/cmake-build-debug

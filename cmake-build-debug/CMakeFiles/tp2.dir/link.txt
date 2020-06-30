@@ -1,1 +1,0 @@
-/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/tp2.dir/main.cpp.o CMakeFiles/tp2.dir/heurAGM.cpp.o CMakeFiles/tp2.dir/Insercion.cpp.o CMakeFiles/tp2.dir/Tests/tests.cpp.o CMakeFiles/tp2.dir/2opt.cpp.o  -o tp2.exe -Wl,--out-implib,libtp2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

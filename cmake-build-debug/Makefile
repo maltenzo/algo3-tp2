@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/Usuario/AppData/Local/JetBrains/CLion2020.1/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /snap/clion/114/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/Usuario/AppData/Local/JetBrains/CLion2020.1/cygwin_cmake/bin/cmake.exe -E remove -f
+RM = /snap/clion/114/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub"
+CMAKE_SOURCE_DIR = /home/enzo/Escritorio/Algo3/tp2-github
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug"
+CMAKE_BINARY_DIR = /home/enzo/Escritorio/Algo3/tp2-github/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmak
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/cygdrive/c/Users/Usuario/AppData/Local/JetBrains/CLion2020.1/cygwin_cmake/bin/cmake.exe -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/114/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/cygdrive/c/Users/Usuario/AppData/Local/JetBrains/CLion2020.1/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/114/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/CMakeFiles" "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/enzo/Escritorio/Algo3/tp2-github/cmake-build-debug/CMakeFiles /home/enzo/Escritorio/Algo3/tp2-github/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/cygdrive/c/Users/Usuario/Desktop/labo/Algo 3/tp2 gihub/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/enzo/Escritorio/Algo3/tp2-github/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named tp2
+# Target rules for targets named tp2_github
 
 # Build rule for target.
-tp2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tp2
-.PHONY : tp2
+tp2_github: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tp2_github
+.PHONY : tp2_github
 
 # fast build rule for target.
-tp2/fast:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/build
-.PHONY : tp2/fast
+tp2_github/fast:
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/build
+.PHONY : tp2_github/fast
 
 2opt.o: 2opt.cpp.o
 
@@ -129,7 +129,7 @@ tp2/fast:
 
 # target to build an object file
 2opt.cpp.o:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/2opt.cpp.o
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/2opt.cpp.o
 .PHONY : 2opt.cpp.o
 
 2opt.i: 2opt.cpp.i
@@ -138,7 +138,7 @@ tp2/fast:
 
 # target to preprocess a source file
 2opt.cpp.i:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/2opt.cpp.i
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/2opt.cpp.i
 .PHONY : 2opt.cpp.i
 
 2opt.s: 2opt.cpp.s
@@ -147,7 +147,7 @@ tp2/fast:
 
 # target to generate assembly for a file
 2opt.cpp.s:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/2opt.cpp.s
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/2opt.cpp.s
 .PHONY : 2opt.cpp.s
 
 Insercion.o: Insercion.cpp.o
@@ -156,7 +156,7 @@ Insercion.o: Insercion.cpp.o
 
 # target to build an object file
 Insercion.cpp.o:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/Insercion.cpp.o
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/Insercion.cpp.o
 .PHONY : Insercion.cpp.o
 
 Insercion.i: Insercion.cpp.i
@@ -165,7 +165,7 @@ Insercion.i: Insercion.cpp.i
 
 # target to preprocess a source file
 Insercion.cpp.i:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/Insercion.cpp.i
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/Insercion.cpp.i
 .PHONY : Insercion.cpp.i
 
 Insercion.s: Insercion.cpp.s
@@ -174,7 +174,7 @@ Insercion.s: Insercion.cpp.s
 
 # target to generate assembly for a file
 Insercion.cpp.s:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/Insercion.cpp.s
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/Insercion.cpp.s
 .PHONY : Insercion.cpp.s
 
 Tests/tests.o: Tests/tests.cpp.o
@@ -183,7 +183,7 @@ Tests/tests.o: Tests/tests.cpp.o
 
 # target to build an object file
 Tests/tests.cpp.o:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/Tests/tests.cpp.o
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/Tests/tests.cpp.o
 .PHONY : Tests/tests.cpp.o
 
 Tests/tests.i: Tests/tests.cpp.i
@@ -192,7 +192,7 @@ Tests/tests.i: Tests/tests.cpp.i
 
 # target to preprocess a source file
 Tests/tests.cpp.i:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/Tests/tests.cpp.i
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/Tests/tests.cpp.i
 .PHONY : Tests/tests.cpp.i
 
 Tests/tests.s: Tests/tests.cpp.s
@@ -201,7 +201,7 @@ Tests/tests.s: Tests/tests.cpp.s
 
 # target to generate assembly for a file
 Tests/tests.cpp.s:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/Tests/tests.cpp.s
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/Tests/tests.cpp.s
 .PHONY : Tests/tests.cpp.s
 
 heurAGM.o: heurAGM.cpp.o
@@ -210,7 +210,7 @@ heurAGM.o: heurAGM.cpp.o
 
 # target to build an object file
 heurAGM.cpp.o:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/heurAGM.cpp.o
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/heurAGM.cpp.o
 .PHONY : heurAGM.cpp.o
 
 heurAGM.i: heurAGM.cpp.i
@@ -219,7 +219,7 @@ heurAGM.i: heurAGM.cpp.i
 
 # target to preprocess a source file
 heurAGM.cpp.i:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/heurAGM.cpp.i
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/heurAGM.cpp.i
 .PHONY : heurAGM.cpp.i
 
 heurAGM.s: heurAGM.cpp.s
@@ -228,7 +228,7 @@ heurAGM.s: heurAGM.cpp.s
 
 # target to generate assembly for a file
 heurAGM.cpp.s:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/heurAGM.cpp.s
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/heurAGM.cpp.s
 .PHONY : heurAGM.cpp.s
 
 main.o: main.cpp.o
@@ -237,7 +237,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -246,7 +246,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -255,7 +255,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/tp2.dir/build.make CMakeFiles/tp2.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/tp2_github.dir/build.make CMakeFiles/tp2_github.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -265,8 +265,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... tp2"
 	@echo "... edit_cache"
+	@echo "... tp2_github"
 	@echo "... 2opt.o"
 	@echo "... 2opt.i"
 	@echo "... 2opt.s"

@@ -6,3 +6,5 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+#ignoro los archivos de clion para no tener conflictos entre windows (leon) y linux (el resto)
+**/cmake-build-debug
