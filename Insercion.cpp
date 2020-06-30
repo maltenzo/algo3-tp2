@@ -14,7 +14,9 @@ vector<int> insercion(int& l){
     usados[2] = true;
     for (size_t i = 0; i < matriz_adyacencia.size(); i++) {
       for (size_t j = 0; j < matriz_adyacencia[0].size(); j++) {
-        cout<<matriz_adyacencia[i][j];
+         if(i != j){
+          cout<<i<< " " << j << " " << matriz_adyacencia[i][j]<<endl;
+         }   
       }
     }
     l = matriz_adyacencia[0][1] + matriz_adyacencia[1][2] + matriz_adyacencia[2][0];//longitud inicial del ciclo
