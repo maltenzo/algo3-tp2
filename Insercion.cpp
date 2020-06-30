@@ -125,7 +125,7 @@ vector<int> insertar(int& l, int nodo){
     //copio el ciclo viejo y agrego el nuevo nodo donde vaya
     for (int i = 0; i < ciclo.size(); i++) {
         v.push_back(ciclo[i]);
-        if (ciclo[i] == inicio){
+        if (i == inicio){
             v.push_back(nodo);
         }
     }
