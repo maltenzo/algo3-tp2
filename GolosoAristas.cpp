@@ -57,9 +57,7 @@ vector<vector<int>> matrizAVector(vector<vector<int>> matriz){
     for(int i = 0; i < matriz.size(); i++){
 
         for (int j = i+1; j < matriz.size(); j++){
-            vector<int> vec;
-            vec.push_back(i); vec.push_back(j); vec.push_back(matriz[i][j]);
-            vecAristas.push_back(vec);
+            vecAristas.push_back({i+1,j+1,matriz[i][j]});
         }
     }
     return vecAristas;
