@@ -78,12 +78,14 @@ int main(int argc, char** argv)
 
 	 }
 	 else if(algoritmo == "T_TABU"){
-
+	 	memoria_ciclos = true;
+	 	memoria_estructura = false;
 	 	circuito = tabuSearch(peso_circuito);
 
 	 }else if(algoritmo == "T_TABU_2"){
-
-	     circuito = test_TABU_2(peso_circuito);
+	 	memoria_estructura = true;
+	 	memoria_ciclos = false;
+		circuito = test_TABU_2(peso_circuito);
 
 	 }else if(algoritmo == "GA"){
 
