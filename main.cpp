@@ -26,7 +26,9 @@ unsigned int ITERACIONES_TABU = 100;
 int main(int argc, char** argv)
 {
 	// Leemos el parametro que indica el algoritmo a ejecutar.
-	map<string, string> algoritmos_implementados = {{"ins", "insercion"},{"agm", "heurAGM"},{"T_AGM","Tests AGM"},{"T_AGM_2", "otro Test AGM"}, {"T_TABU", "Test Tabu Search"}, {"GA", "golosoArista"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
+	map<string, string> algoritmos_implementados = {{"ins", "insercion"},{"agm", "heurAGM"},{"T_AGM","Tests AGM"},
+                                                 {"T_AGM_2", "otro Test AGM"}, {"T_TABU", "Test Tabu Search"}, {"GA", "golosoArista"},
+                                                    {"T_TABU_2","segundo Test para Tabú"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
 
 	// Verificar que el algoritmo pedido exista.
 	if (argc < 2 || algoritmos_implementados.find(argv[1]) == algoritmos_implementados.end())
@@ -61,30 +63,32 @@ int main(int argc, char** argv)
 	{
 		MB = true;
 		circuito = insercion(peso_circuito);
+
 	}else if(algoritmo == "agm"){
+
 	     circuito = heurAG(matriz_adyacencia, peso_circuito);
+
 	 }else if(algoritmo == "T_AGM"){
-	     circuito = test_AGM_1();
-         peso_circuito = circuito[circuito.size()-1];
-         vector<int> temp(circuito.size()-1,0);
-         for(int i = 0; i<circuito.size()-1;i++){
-             temp[i] = circuito[i];
-         }
-         circuito = temp;
+
+	     circuito = test_AGM_1(peso_circuito);
+
 	 }else if(algoritmo == "T_AGM_2"){
-         circuito = test_AGM_2();
-         peso_circuito = circuito[circuito.size()-1];
-         vector<int> temp(circuito.size()-1,0);
-         for(int i = 0; i<circuito.size()-1;i++){
-             temp[i] = circuito[i];
-         }
-         circuito = temp;
+
+         circuito = test_AGM_2(peso_circuito);
+
 	 }
 	 else if(algoritmo == "T_TABU"){
+
 	 	circuito = tabuSearch(peso_circuito);
 
-	 } else if(algoritmo == "GA"){
+	 }else if(algoritmo == "T_TABU_2"){
+
+	     circuito = test_TABU_2(peso_circuito);
+
+	 }else if(algoritmo == "GA"){
+
 	     circuito = golosoArista(matriz_adyacencia, peso_circuito);
+
 	 }// else if (algoritmo =="")..
 
 

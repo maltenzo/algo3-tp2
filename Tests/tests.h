@@ -9,8 +9,8 @@
 #include <vector>
 using namespace std;
 
-vector<int> test_AGM_1();
-vector<int> test_AGM_2();
-
+vector<int> test_AGM_1(int& peso);
+vector<int> test_AGM_2(int& peso);
+vector<int> test_TABU_2(int& peso);
 
 #endif //TP2_TESTS_H
