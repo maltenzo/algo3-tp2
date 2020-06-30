@@ -12,13 +12,6 @@ vector<int> insercion(int& l){
     usados[0] = true;
     usados[1] = true;
     usados[2] = true;
-    for (size_t i = 0; i < matriz_adyacencia.size(); i++) {
-      for (size_t j = 0; j < matriz_adyacencia[0].size(); j++) {
-         if(i != j){
-          cout<<i<< " " << j << " " << matriz_adyacencia[i][j]<<endl;
-         }   
-      }
-    }
     l = matriz_adyacencia[0][1] + matriz_adyacencia[1][2] + matriz_adyacencia[2][0];//longitud inicial del ciclo
     while(ciclo.size() < matriz_adyacencia.size()){ //mientras queden nodos sueltos sigo agregando
         int a = elegir(usados); // devuelvo el nodo elegido
