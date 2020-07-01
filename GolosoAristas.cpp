@@ -8,23 +8,7 @@ bool mayorQue(vector<int> aristaA, vector<int> aristaB){
     return aristaA[2] < aristaB[2];
 }
 
-vector<int> armarCircuito(vector<vector<int>> &arVec, int & peso_circ){ //arma respuesta de aristas elegidas
-    vector<int> circuito(arVec.size(), -1);
-    int peso = 0; int vertices = arVec.size(); vector<int> res;
-    for(vector<int> x : arVec){
-        peso += x[2];
-        if(circuito[x[0]-1] != -1){circuito[x[1]-1] = x[0]-1;}
-        else circuito[x[0]-1] = x[1]-1;
-    }
-    peso_circ = peso;
-    int j = -1;
-    while(j != 0){
-        if(j == -1){j = 0;}
-        res.push_back(j+1);
-        j = circuito[j];
-    }
-    return res;
-}
+
 
 
 vector<int> aristaMinimaFactible(list<vector<int>> &aristasRestantes){//quizas sortear aristas para sacar en O(1)
@@ -48,6 +32,56 @@ list<vector<int>> vec2list(vector<vector<int>> &X) {
         res.push_back(X[i]);
     }
     return res;
+}
+
+vector<int> armarCircuito(vector<vector<int>> &arVec, int & peso_circ){ //arma respuesta de aristas elegidas
+    list<vector<int>> listaAristas = vec2list(arVec);
+    vector<int> res;
+    int peso = 0; int vertices = arVec.size();
+
+    int previo = 1;
+    auto it = listaAristas.begin();
+    while(listaAristas.size() != 0) {//Itero sobre aristas elegidas
+
+       if((*it)[0] == previo) { //miro en el primer vertice de la arista di es el previo
+           if(res.size() == 0){res.push_back((*it)[0]);// si estoy en el primer par de aristas meto las dos
+                res.push_back((*it)[1]);
+               peso += (*it)[2]; // agrego el peso de la arista
+               previo = (*it)[1]; //actualizo de donde vengo
+                it = listaAristas.erase(it);//saco las aristas que voy metiendo
+               it = listaAristas.begin();//volvemos a empezar con la nueva lista
+           }
+           else {
+               peso += (*it)[2];
+               if(listaAristas.size() == 1) break;//mismo agregando solo la proxima
+               res.push_back((*it)[1]);
+               previo = (*it)[1];
+               it = listaAristas.erase(it);
+               it = listaAristas.begin();}
+
+       } else if((*it)[1] == previo){ //mismo pero mirando segundo vertice de la arista
+                if(res.size() == 0){res.push_back((*it)[1]);
+                    res.push_back((*it)[0]);
+                    peso += (*it)[2];
+                    previo = (*it)[0];
+                    it = listaAristas.erase(it);
+                    it = listaAristas.begin();
+                }
+                else {
+                    peso += (*it)[2];
+                    if(listaAristas.size() == 1) break;
+                    res.push_back((*it)[0]);
+                    previo = (*it)[0];
+                    it = listaAristas.erase(it);}
+                    it = listaAristas.begin();
+       } else {
+           ++it;
+       }
+    }
+
+    peso_circ = peso;
+
+return res;
 }
 
 vector<vector<int>> matrizAVector(vector<vector<int>> matriz){
@@ -75,11 +109,3 @@ vector<int> golosoArista(vector<vector<int>>& X, int& peso_circ){
     }
     return armarCircuito(aristasH, peso_circ);
 }
-/* lo que use pa testear
-int main() {
-    //int V = 4;
-    //vector<vector<int>> X = {{1,2,10},{1,3,15},{1,4,20},{2,3,35},{2,4,25},{3,4,30}};
-    //vector<int> camino = golosoArista(V,X);
-    return 0;
-}
-*/

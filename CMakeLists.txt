@@ -14,4 +14,4 @@ add_executable(tp2_github
         GolosoAristas.cpp
         heurAGM.cpp
         Insercion.cpp
-        main.cpp)
+        main.cpp unir_find.hpp)

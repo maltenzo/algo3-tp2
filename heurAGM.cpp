@@ -1,51 +1,5 @@
 #include "funciones.h"
-
-
-class unir_find{ //clase creada para krustal eficiente
-public:
-    vector<int> padre;
-    vector<int> altura;
-
-    unir_find(vector<int> p, vector<int> a); //creador
-    int find(int x);						  //encuentra el padre del subarbol de x
-    void unir(int x, int y);				  //cuelga el subarbol de x al de y
-
-};
-
-unir_find::unir_find(vector<int> p, vector<int> a):
-        padre(p), altura(a){}
-
-unir_find init(int n){ //inicia un unir_find con la cantidad de vertices siendo n
-    vector<int> padre(n,0);
-    vector<int> altura(n,1);
-    for(int  i = 0; i<n; i++){
-        padre[i] = i; //al principio cada vértice es su propio subarbol
-    }
-    unir_find res = unir_find(padre, altura);
-    return res;
-}
-
-int unir_find::find(int x){
-    int p = padre[x];
-    if(p != x){                          //si no es raíz
-        padre[x] = this->find(p);	 //busco la raiz de su padre y la escribo como padre de x
-        p = padre[x];
-    }
-    return p;
-}
-
-void unir_find::unir(int x, int y){
-    x = this->find(x);						//busco amabs raices
-    y = this->find(y);
-    if(altura[x] < altura[y]){    // si el subarbol x es menor que el de y
-        padre[x] = y;					//cuelgo el de x al de y
-    }else{
-        padre[y] = x;					//sino, al reves
-    }
-    if(altura[x] == altura[y]){	//si son de la misma alturam entones se colgó y a x, e x aumentó en 1 su altura
-        altura[x] += 1;
-    }
-}
+#include "unir_find.hpp"
 
 
 //merge sort basado en el peso de la aristas
@@ -84,16 +38,8 @@ void merge_sort(vector<arista>& v,int v_1, int v_2){ //v es el vector, v_1 indic
 	}
 }
 
-int signo_admiracion(int n){
-    int res = 1;
-    for(int i = 2; i<=n;i++){
-        res = res*i;
-    }
-    return res;
-}
-
 vector<arista> sort_aristas(grafo g){ //ordeno las aristas por peso
-	vector<arista> res(signo_admiracion(g.size()-1), arista(-1,-1,-1));
+	vector<arista> res(g.size()*(g.size()-1)/2, arista(-1,-1,-1));
 	int k = 0;
 	for(int i = 0; i<g.size(); i++){
 		for(int j = i+1; j<g.size();j++){
@@ -160,9 +106,48 @@ vector<int> dfs(vector<arista> t){
     return orden;
 }
 
+vector<int> dfs_mejor(vector<vector<int>> t){
+    int padre = 0;
+    int nro_orden = 1;
+    int i = 0;
+    vector<int> orden(t.size(),0);
+    vector<int> padres(t.size(),-1);
+    vector<int> indices(t.size(),-1);
+    padres[padre] = padre;
+    indices[padre] = i;
+    while(nro_orden <t.size()){
+        if(i == t[padre].size()){
+            indices[padre] = i;
+            padre = padres[padre];
+            i = indices[padre];
+            i++;
+        }else{
+            int hijo = t[padre][i];
+            if(hijo != padres[padre]){
+                orden[nro_orden] = hijo;
+                nro_orden++;
+                indices[padre] = i;
+                padres[hijo] = padre;
+                padre = hijo;
+                i = indices[hijo];
+            }
+            i++;
+        }
+    }
+    return orden;
+}
+
 vector<int> heurAG(grafo g, int& p){
 	vector<arista> t = kruskal(g);          //Hago el arbol, representado como una lista de adyacencia
-	vector<int> orden = dfs(t);             //Recorro por dfs, para saber los ordenes
+
+	vector<vector<int>> arbol_t(g.size());
+	for(int i = 0; i<t.size();i++){
+	    arista e = t[i];
+	    arbol_t[e.inicio].push_back(e.fin);
+	    arbol_t[e.fin].push_back(e.inicio);
+	}
+
+	vector<int> orden = dfs_mejor(arbol_t);             //Recorro por dfs, para saber los ordenes
 	p = 0;                                  //seteo el peso en 0
     p += g[orden[0]][orden[orden.size()-1]]; //añado la arsita que completa el circuito
     orden[0] = 1;                           //cambio el vertice a convención 1,n
