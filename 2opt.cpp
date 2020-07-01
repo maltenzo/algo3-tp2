@@ -42,8 +42,8 @@ bool cicloMejor(arista C1, arista C2){
 
 int costo(vector<int> ciclo){
 	int res = 0;
-	for(int i = 0; i < ciclo.size()-1; i++){
-		res += matriz_adyacencia[i][i+1];
+	for(int i = 0; i < ciclo.size(); i++){
+		res += matriz_adyacencia[i][i+1 % ciclo.size()];
 	}
 	return res;
 }
@@ -216,8 +216,8 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 			arista mejor_arista2(ciclo[i+1 % ciclo.size()], ciclo[j+1 % ciclo.size()], matriz_adyacencia[ciclo[i+1 % ciclo.size()]][ciclo[j+1 % ciclo.size()]]);
 			ultimosSwaps[idx_memoria] = mejor_arista2;
 			idx_memoria = (idx_memoria + 1) % t;
+			mejor = swap(ciclo, i, j);
 		}
-		mejor = swap(ciclo, i, j);
 		if(i!=j){
             costoCiclo = costo_mejor;
 		}
