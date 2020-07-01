@@ -7,7 +7,7 @@
 #include <set>
 #include <map>
 #include "funciones.h"
-#include "GolosoAristas.cpp"
+
 
 using namespace std;
 

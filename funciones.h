@@ -46,6 +46,10 @@ extern bool memoria_estructura;
 extern unsigned int ITERACIONES_TABU;
 extern unsigned int t;
 
+//Aristas
+
+vector<int> golosoArista(vector<vector<int>>& X, int& peso_circ);
+
 extern int INFTY;
 
 #endif // FUNC_H

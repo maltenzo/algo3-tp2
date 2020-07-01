@@ -11,7 +11,7 @@ add_executable(tp2_github
         Tests/tests.h
         2opt.cpp
         funciones.h
-
+        GolosoAristas.cpp
         heurAGM.cpp
         Insercion.cpp
         main.cpp)
