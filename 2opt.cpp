@@ -206,23 +206,49 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 		// Recordar en memoria: o ciclos, o swaps
 
 		// Recordar este mejor ciclo
+
+		// Puede pasar que todo sea TABU y no encontre nada, en este caso 'mejor' es un vector vacio
+		// en el caso de memoria_ciclos, y si no tengo los indices en i = j = 0 
 		if(memoria_ciclos){
-			ultimosCiclos[idx_memoria] = mejor;
-			idx_memoria = (idx_memoria + 1) % t; // Guardo los ultimos t
+			
+			if(mejor.empty()){
+				for(int k = 0; k < subvecindad.size(); k++){
+					elegida = subvecindad[k];
+					if(elegida.peso < costo_mejor){
+						costo_mejor = elegida.peso;
+						i = elegida.inicio;
+						j = elegida.fin;
+					} // Me quede con los mejores swaps 					
+				}
+
+			} else {
+				ultimosCiclos[idx_memoria] = mejor;
+				idx_memoria = (idx_memoria + 1) % t; // Guardo los ultimos t
+			}
 		}
 		else if(memoria_estructura){
-			ultimosSwaps[idx_memoria] = mejor_arista;
-			idx_memoria = (idx_memoria + 1) % t;
-			arista mejor_arista2(ciclo[i+1 % ciclo.size()], ciclo[j+1 % ciclo.size()], matriz_adyacencia[ciclo[i+1 % ciclo.size()]][ciclo[j+1 % ciclo.size()]]);
-			ultimosSwaps[idx_memoria] = mejor_arista2;
-			idx_memoria = (idx_memoria + 1) % t;
+			if(i == 0 && j == 0){
+				for(int k = 0; k < subvecindad.size(); k++){
+					elegida = subvecindad[k];
+					if(elegida.peso < costo_mejor){
+						costo_mejor = elegida.peso;
+						i = elegida.inicio;
+						j = elegida.fin;
+					} // Me quede con los mejores swaps, y no los guardo, porque son tabu 					
+				}
+			} else {
+
+				ultimosSwaps[idx_memoria] = mejor_arista;
+				idx_memoria = (idx_memoria + 1) % t;
+				arista mejor_arista2(ciclo[i+1 % ciclo.size()], ciclo[j+1 % ciclo.size()], matriz_adyacencia[ciclo[i+1 % ciclo.size()]][ciclo[j+1 % ciclo.size()]]);
+				ultimosSwaps[idx_memoria] = mejor_arista2;
+				idx_memoria = (idx_memoria + 1) % t;
+			}
 		}
 		
 		mejor = swap(ciclo, i, j);
+		costoCiclo = costo_mejor;
 		
-		if(i!=j){
-            costoCiclo = costo_mejor;
-		}
 		return mejor;
 
 }

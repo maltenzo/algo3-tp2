@@ -18,7 +18,7 @@ int n, m; // # nodos, # aristas
 vector<vector<int>> matriz_adyacencia;
 bool memoria_ciclos = false;
 bool memoria_estructura = false;
-unsigned int ITERACIONES_TABU = 100;
+unsigned int ITERACIONES_TABU = 300;
 
 
 // Si tenemos las heuristicas en archivos separados, incluirlos
@@ -104,7 +104,7 @@ int main(int argc, char** argv)
     cout << circuito.size() <<" "<< peso_circuito << endl;
 
     for(int i = 0; i < circuito.size(); i++){
-    	cout << circuito[i];
+    	cout << circuito[i] << " ";
     }
     cout << endl;
     return 0;
