@@ -104,7 +104,7 @@ int main(int argc, char** argv)
     cout << circuito.size() <<" "<< peso_circuito << endl;
 
     for(int i = 0; i < circuito.size(); i++){
-    	cout << circuito[i];
+    	cout << circuito[i] << " ";
     }
     cout << endl;
     return 0;
