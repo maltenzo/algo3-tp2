@@ -216,8 +216,10 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 			arista mejor_arista2(ciclo[i+1 % ciclo.size()], ciclo[j+1 % ciclo.size()], matriz_adyacencia[ciclo[i+1 % ciclo.size()]][ciclo[j+1 % ciclo.size()]]);
 			ultimosSwaps[idx_memoria] = mejor_arista2;
 			idx_memoria = (idx_memoria + 1) % t;
-			mejor = swap(ciclo, i, j);
 		}
+		
+		mejor = swap(ciclo, i, j);
+		
 		if(i!=j){
             costoCiclo = costo_mejor;
 		}
@@ -248,7 +250,7 @@ vector<int> tabuSearch(int &l){
 		// Inicializar para recordar aristas
 		memoriaEstructura.resize(t);
 	}
-	
+		
 
 	while(ITERACIONES_TABU){ // en principio el criterio de parada que sea iteraciones fijas
 	            // (L) me gustaría experimentar en el futuro con iteraciones de "no cambio". que opinian?
