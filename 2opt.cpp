@@ -230,6 +230,7 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 
 
 vector<int> tabuSearch(int &l){
+    MB = true;
 	vector<int> ciclo = insercion(l);
 	int n = ciclo.size(); // Asumo que viene el ciclo con los n vertices.
 
