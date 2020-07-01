@@ -230,7 +230,7 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 
 
 vector<int> tabuSearch(int &l){
-	vector<int> ciclo = heurAG(matriz_adyacencia, l);
+	vector<int> ciclo = insercion(l);
 	int n = ciclo.size(); // Asumo que viene el ciclo con los n vertices.
 
 	for(int i = 0; i < n; i++)ciclo[i]--;
