@@ -160,9 +160,48 @@ vector<int> dfs(vector<arista> t){
     return orden;
 }
 
+vector<int> dfs_mejor(vector<vector<int>> t){
+    int padre = 0;
+    int nro_orden = 1;
+    int i = 0;
+    vector<int> orden(t.size(),0);
+    vector<int> padres(t.size(),-1);
+    vector<int> indices(t.size(),-1);
+    padres[padre] = padre;
+    indices[padre] = i;
+    while(nro_orden <t.size()){
+        if(i == t[padre].size()){
+            indices[padre] = i;
+            padre = padres[padre];
+            i = indices[padre];
+            i++;
+        }else{
+            int hijo = t[padre][i];
+            if(hijo != padres[padre]){
+                orden[nro_orden] = hijo;
+                nro_orden++;
+                indices[padre] = i;
+                padres[hijo] = padre;
+                padre = hijo;
+                i = indices[hijo];
+            }
+            i++;
+        }
+    }
+    return orden;
+}
+
 vector<int> heurAG(grafo g, int& p){
 	vector<arista> t = kruskal(g);          //Hago el arbol, representado como una lista de adyacencia
-	vector<int> orden = dfs(t);             //Recorro por dfs, para saber los ordenes
+
+	vector<vector<int>> arbol_t(g.size());
+	for(int i = 0; i<t.size();i++){
+	    arista e = t[i];
+	    arbol_t[e.inicio].push_back(e.fin);
+	    arbol_t[e.fin].push_back(e.inicio);
+	}
+
+	vector<int> orden = dfs_mejor(arbol_t);             //Recorro por dfs, para saber los ordenes
 	p = 0;                                  //seteo el peso en 0
     p += g[orden[0]][orden[orden.size()-1]]; //añado la arsita que completa el circuito
     orden[0] = 1;                           //cambio el vertice a convención 1,n
