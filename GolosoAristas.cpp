@@ -142,12 +142,8 @@ vector<int> golosoArista(vector<vector<int>>& X, int& peso_circ){
 
     for(int i = 0; i < V; i++){
         vector<int> e = aristaMinimaFactible(aristasRestantes, aristasH);
-        vector<int>* a = &e;
         actualizarEstados(e, estadoVertices, aristasRestantes);
-        vector<int>* b = &e;
         aristasH.push_back(e);
-        vector<int>* c = &e;
-        vector<int> d;
     }
     return armarCircuito(aristasH, peso_circ);
 }
