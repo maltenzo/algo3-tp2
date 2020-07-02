@@ -9,12 +9,12 @@ bool mayorQue(vector<int> aristaA, vector<int> aristaB){
 }
 
 void actualizarEstados(vector<int> e, vector<int> &estadoVertices, list<vector<int>> &aristasRestantes){
-    estadoVertices[e[0]] ++;
-    estadoVertices[e[1]] ++;
+    estadoVertices[e[0]-1] ++;//actualizo grados de aristas
+    estadoVertices[e[1]-1] ++;
 
     auto it = aristasRestantes.begin();
     while(it != aristasRestantes.end()) {//Sacar aristas inútiles
-        if( (*it) == e || estadoVertices[(*it)[0]] == 2 || estadoVertices[(*it)[1]] == 2) {it = aristasRestantes.erase(it);}
+        if( (*it) == e || estadoVertices[(*it)[0]-1] == 2 || estadoVertices[(*it)[1]-1] == 2) {it = aristasRestantes.erase(it);}
         else {++it;}
     }
 }
@@ -56,7 +56,7 @@ bool hayCircuito(vector<vector<int>> aristasElegidas,vector<int> e){
     return false;
 }
 
-vector<int> aristaMinimaFactible(list<vector<int>> &aristasRestantes, vector<vector<int>> aristasElegidas){//quizas sortear aristas para sacar en O(1)
+vector<int> aristaMinimaFactible(list<vector<int>> &aristasRestantes, vector<vector<int>>& aristasElegidas){//quizas sortear aristas para sacar en O(1)
     if(aristasRestantes.size() == 1){return aristasRestantes.front();}// si queda una arista me la quedo
 
     auto it = aristasRestantes.begin(); // si no itero sobre la lista de aristas restantes
@@ -142,8 +142,12 @@ vector<int> golosoArista(vector<vector<int>>& X, int& peso_circ){
 
     for(int i = 0; i < V; i++){
         vector<int> e = aristaMinimaFactible(aristasRestantes, aristasH);
+        vector<int>* a = &e;
         actualizarEstados(e, estadoVertices, aristasRestantes);
+        vector<int>* b = &e;
         aristasH.push_back(e);
+        vector<int>* c = &e;
+        vector<int> d;
     }
     return armarCircuito(aristasH, peso_circ);
 }
