@@ -8,13 +8,6 @@ bool mayorQue(vector<int> aristaA, vector<int> aristaB){
     return aristaA[2] < aristaB[2];
 }
 
-
-
-
-vector<int> aristaMinimaFactible(list<vector<int>> &aristasRestantes){//quizas sortear aristas para sacar en O(1)
-    return aristasRestantes.front();
-}
-
 void actualizarEstados(vector<int> e, vector<int> &estadoVertices, list<vector<int>> &aristasRestantes){
     estadoVertices[e[0]] ++;
     estadoVertices[e[1]] ++;
@@ -32,6 +25,51 @@ list<vector<int>> vec2list(vector<vector<int>> &X) {
         res.push_back(X[i]);
     }
     return res;
+}
+
+bool hayCircuito(vector<vector<int>> aristasElegidas,vector<int> e){
+    if(aristasElegidas.size() == 0) return false;//elijo un punto de partida y uno de llegada
+    int actual = e[0]; int obj = e[1];
+    list<vector<int>> listaAristas = vec2list(aristasElegidas);
+
+    auto it = listaAristas.begin();
+    while(it != listaAristas.end()) { //busco camino entre el actual y el objetivo
+
+        if((*it)[0] == actual){ //si alguna arista contiene al actual actualizo
+            if((*it)[1] == obj){return true;// el el otro extremo es el objetivo devuelvo true
+            } else {
+                actual = (*it)[1];
+                it = listaAristas.erase(it);
+                it = listaAristas.begin();
+            }
+
+        } else if ((*it)[1] == actual){
+            if((*it)[0] == obj){return true;
+            } else {
+                actual = (*it)[0];
+                it = listaAristas.erase(it);
+                it = listaAristas.begin();
+            }
+
+        } else {++it;}
+    }
+    return false;
+}
+
+vector<int> aristaMinimaFactible(list<vector<int>> &aristasRestantes, vector<vector<int>> aristasElegidas){//quizas sortear aristas para sacar en O(1)
+    if(aristasRestantes.size() == 1){return aristasRestantes.front();}// si queda una arista me la quedo
+
+    auto it = aristasRestantes.begin(); // si no itero sobre la lista de aristas restantes
+    bool encontre = false; vector<int> e;
+    while(!encontre){
+        if(!hayCircuito(aristasElegidas, (*it))) { //si no genera circuito la agarro
+            e = *it;
+            encontre = true;
+        } else {                    //si no miro la proxima
+            ++it;
+        }
+    }
+    return e;
 }
 
 vector<int> armarCircuito(vector<vector<int>> &arVec, int & peso_circ){ //arma respuesta de aristas elegidas
@@ -103,7 +141,7 @@ vector<int> golosoArista(vector<vector<int>>& X, int& peso_circ){
     vector<vector<int>> aristasH;
 
     for(int i = 0; i < V; i++){
-        vector<int> e = aristaMinimaFactible(aristasRestantes);
+        vector<int> e = aristaMinimaFactible(aristasRestantes, aristasH);
         actualizarEstados(e, estadoVertices, aristasRestantes);
         aristasH.push_back(e);
     }
