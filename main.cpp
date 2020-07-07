@@ -27,8 +27,8 @@ int main(int argc, char** argv)
 {
 	// Leemos el parametro que indica el algoritmo a ejecutar.
 	map<string, string> algoritmos_implementados = {{"ins", "insercion"},{"agm", "heurAGM"},{"T_AGM","Tests AGM"},
-                                                 {"T_AGM_2", "otro Test AGM"}, {"T_TABU", "Test Tabu Search"}, {"GA", "golosoArista"},
-                                                    {"T_TABU_2","segundo Test para Tabú"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
+                                                 {"T_AGM_2", "otro Test AGM"}, {"TABU_CICLOS", "Tabú con memoria de ciclos"}, {"GA", "golosoArista"},
+                                                    {"TABU_ARISTAS","Tabú con memoria de estructura"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
 
 	// Verificar que el algoritmo pedido exista.
 	if (argc < 2 || algoritmos_implementados.find(argv[1]) == algoritmos_implementados.end())
@@ -77,15 +77,15 @@ int main(int argc, char** argv)
          circuito = test_AGM_2(peso_circuito);
 
 	 }
-	 else if(algoritmo == "T_TABU"){
+	 else if(algoritmo == "TABU_CICLOS"){
 	 	memoria_ciclos = true;
 	 	memoria_estructura = false;
 	 	circuito = tabuSearch(peso_circuito);
 
-	 }else if(algoritmo == "T_TABU_2"){
+	 }else if(algoritmo == "TABU_ARISTAS"){
 	 	memoria_estructura = true;
 	 	memoria_ciclos = false;
-		circuito = test_TABU_2(peso_circuito);
+		circuito = tabuSearch(peso_circuito);
 
 	 }else if(algoritmo == "GA"){
 
