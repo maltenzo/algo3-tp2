@@ -74,6 +74,59 @@ vector<arista> kruskal(grafo g){ //creo un AGM con krustal
 	return res;
 }
 
+vector<int> dfs_mejor(vector<vector<int>> t){
+    int padre = 0;                          //padre indica que lista en t estamos viendo, es el padre del vértice que encontremos
+    int nro_orden = 1;                      //nro de orden es el que le vamos a asignar al vérticce que encontremos
+    int i = 0;                              //indice de la lista de adyacentes de "padre"
+    vector<int> orden(t.size(),0);     // orden es el ciclo final
+    vector<int> padres(t.size(),-1);    // vector que nos dicen quien es el padre del vértice v_I en padre[v_i]
+    vector<int> indices(t.size(),-1);   //indices de donde nos quedamos al recorrer la lista de adyacencia de v_i
+    padres[padre] = padre;                     //el padre de 0 es el mismo, por ser raíz
+    indices[padre] = i;                         //su indice es 0
+    while(nro_orden <t.size()){              //mientras no hayamos dado ordena  todos los vértices
+        if(i == t[padre].size()){           // si recorrimos todos los adyacentes de "padre"
+            indices[padre] = i;                 //guardamos el indice
+            padre = padres[padre];              // nos movemos al padre de "padre"
+            i = indices[padre];                 // indice del padre
+            i++;                                //avanzo
+        }else{                              //si estamos buscando hijos
+            int hijo = t[padre][i];         //veo un hijo
+            if(hijo != padres[padre]){      //si no es el padre de nuestro padre
+                orden[nro_orden] = hijo;        //le doy orden
+                nro_orden++;
+                indices[padre] = i;             //guardo el indice de "padre"
+                padres[hijo] = padre;           //marco como padre de "hijo" a "padre"
+                padre = hijo;                   //nos movemos al hijo
+                i = indices[hijo];              //buscamos el indice del hijo
+            }
+            i++;                                //avanzamos
+        }
+    }
+    return orden;
+}
+
+vector<int> heurAG(grafo g, int& p){
+	vector<arista> t = kruskal(g);          //Hago el arbol, representado como una lista de adyacencia
+
+	vector<vector<int>> arbol_t(g.size());
+	for(int i = 0; i<t.size();i++){
+	    arista e = t[i];
+	    arbol_t[e.inicio].push_back(e.fin);
+	    arbol_t[e.fin].push_back(e.inicio);
+	}
+
+	vector<int> orden = dfs_mejor(arbol_t);             //Recorro por dfs, para saber los ordenes
+	p = 0;                                  //seteo el peso en 0
+    p += g[orden[0]][orden[orden.size()-1]]; //añado la arsita que completa el circuito
+    orden[0] = 1;                           //cambio el vertice a convención 1,n
+    for(int i = 1; i<orden.size(); i++){
+        p  += g[orden[i-1]-1][orden[i]];    //Agrego el peso de la arista (V_i-1,V_i)
+        orden[i] = orden[i]+1;              // Agrego el vértice i de orden
+	}
+
+	return orden;
+}
+
 //parte recursia de DFS
 void dfs_recu(vector<arista> t, vector<int>& orden, int padre, int& nro_orden, vector<int>& visitados){ //orden es la lista del orden de los vértices, padre es el vertice padre
     for(int i = 0; i<t.size() && nro_orden<orden.size(); i++){ //en cada recursion, reviso todas las aristas para buscar una con el padre
@@ -104,57 +157,4 @@ vector<int> dfs(vector<arista> t){
     visitados[padre] = 1;
     dfs_recu(t,orden,padre,nro_orden,visitados);   //llamo a la recursiva
     return orden;
-}
-
-vector<int> dfs_mejor(vector<vector<int>> t){
-    int padre = 0;
-    int nro_orden = 1;
-    int i = 0;
-    vector<int> orden(t.size(),0);
-    vector<int> padres(t.size(),-1);
-    vector<int> indices(t.size(),-1);
-    padres[padre] = padre;
-    indices[padre] = i;
-    while(nro_orden <t.size()){
-        if(i == t[padre].size()){
-            indices[padre] = i;
-            padre = padres[padre];
-            i = indices[padre];
-            i++;
-        }else{
-            int hijo = t[padre][i];
-            if(hijo != padres[padre]){
-                orden[nro_orden] = hijo;
-                nro_orden++;
-                indices[padre] = i;
-                padres[hijo] = padre;
-                padre = hijo;
-                i = indices[hijo];
-            }
-            i++;
-        }
-    }
-    return orden;
-}
-
-vector<int> heurAG(grafo g, int& p){
-	vector<arista> t = kruskal(g);          //Hago el arbol, representado como una lista de adyacencia
-
-	vector<vector<int>> arbol_t(g.size());
-	for(int i = 0; i<t.size();i++){
-	    arista e = t[i];
-	    arbol_t[e.inicio].push_back(e.fin);
-	    arbol_t[e.fin].push_back(e.inicio);
-	}
-
-	vector<int> orden = dfs_mejor(arbol_t);             //Recorro por dfs, para saber los ordenes
-	p = 0;                                  //seteo el peso en 0
-    p += g[orden[0]][orden[orden.size()-1]]; //añado la arsita que completa el circuito
-    orden[0] = 1;                           //cambio el vertice a convención 1,n
-    for(int i = 1; i<orden.size(); i++){
-        p  += g[orden[i-1]-1][orden[i]];    //Agrego el peso de la arista (V_i-1,V_i)
-        orden[i] = orden[i]+1;              // Agrego el vértice i de orden
-	}
-
-	return orden;
 }
