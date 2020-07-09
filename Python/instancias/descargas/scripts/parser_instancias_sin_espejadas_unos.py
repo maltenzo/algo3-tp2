@@ -24,4 +24,6 @@ for i in range(1,cant_nodos+1):
 	for j in range(i,cant_nodos+1):
 		if(i!=j):
 			peso = problem.get_weight(i,j)
-			print("{} {} {}".format(i, j, peso))
+		else:
+			peso = 0
+		print("{} {} {}".format(i, j, peso))
