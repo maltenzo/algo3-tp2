@@ -12,9 +12,7 @@
 
 using namespace std;
 
-int SUBVECINIDAD_PORCENTAJE = 100; // Con que porcentaje de la vecindad nos quedamos
-int TOP_VECINDAD = 10;
-unsigned int t = 60;
+
 int idx_memoria = 0;
 
 
@@ -132,7 +130,7 @@ vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el cic
 	// SUBVECINDAD_PORCENTAJE es un numero entre 1 y 100. 
     //subvecindad = porcentaje_random(subvecindad, cantidad );
 	
-	subvecindad = porcentaje_random(subvecindad, (cantidad*SUBVECINIDAD_PORCENTAJE)/100 );
+	subvecindad = porcentaje_random(subvecindad, (cantidad*SUBVECINDAD_PORCENTAJE)/100 );
 	return subvecindad;
 }
 
