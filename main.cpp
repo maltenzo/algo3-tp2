@@ -48,6 +48,10 @@ int main(int argc, char** argv)
 	// ORDEN DE ARGUMENTOS PARA TABU: T MEMORIA, PORCENTAJE VECINDAD, ITERACIONES
 	if(argc > 2 && argc <= 5){ // Si no pasan argumentos se usa lo ya definido
 		// atoi convierte el numero string a int, osea "20" --> 20. Literalmente el numero
+		if(argc != 5){
+			cerr << "CAPO PASA TODOS LOS ARGUMENTOS NO VES QUE SINO EXPLOTA" << endl;
+			return 0;
+		}
 		t = atoi(argv[2]);
 		SUBVECINDAD_PORCENTAJE = atoi(argv[3]);
 		ITERACIONES_TABU = atoi(argv[4]);
