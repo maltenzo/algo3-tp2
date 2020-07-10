@@ -116,7 +116,7 @@ vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el cic
 	
 
 	int cantidad = subvecindad.size(); //cantidad de vecinos en la subvecinidad
-	if(cantidad > 150){                  //si tenemos más de 20
+	/*if(cantidad > 20){                  //si tenemos más de 20
         srand(time(0));       //queremos usar un porcentaje random
 	    int random = rand() % 101;
 	    if(random < 30){                //entre 30%
@@ -125,17 +125,12 @@ vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el cic
 	        random -= 20;
 	    }
 	    cantidad = cantidad*random/100;
-	    cout<< "porcentaje y cantidad" << random << " " << cantidad << endl;
-	}
+	}*/
 
 	// SUBVECINDAD_PORCENTAJE es un numero entre 1 y 100. 
     //subvecindad = porcentaje_random(subvecindad, cantidad );
 	
-<<<<<<< HEAD
-	subvecindad = porcentaje_random(subvecindad, cantidad);//(cantidad*SUBVECINIDAD_PORCENTAJE)/100 );
-=======
 	subvecindad = porcentaje_random(subvecindad, (cantidad*SUBVECINDAD_PORCENTAJE)/100 );
->>>>>>> 0a91f77e8c12d125585b19940fb42ea2eb9689ae
 	return subvecindad;
 }
 
@@ -261,8 +256,7 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 
 vector<int> tabuSearch(int &l){
     MB = true;
-	vector<int> ciclo = heurAG(matriz_adyacencia,l);
-	//vector<int> ciclo = insercion(l);
+	vector<int> ciclo = insercion(l);
 	int n = ciclo.size(); // Asumo que viene el ciclo con los n vertices.
 
 	for(int i = 0; i < n; i++)ciclo[i]--;
