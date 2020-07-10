@@ -6,6 +6,7 @@
 #include <chrono>
 #include <set>
 #include <map>
+#include <string>
 #include "funciones.h"
 
 
@@ -18,6 +19,10 @@ int n, m; // # nodos, # aristas
 vector<vector<int>> matriz_adyacencia;
 bool memoria_ciclos = false;
 bool memoria_estructura = false;
+
+// Tabu variables
+unsigned int t = 60;
+int SUBVECINDAD_PORCENTAJE = 100; // Con que porcentaje de la vecindad nos quedamos
 unsigned int ITERACIONES_TABU = 300;
 
 
@@ -39,6 +44,18 @@ int main(int argc, char** argv)
 		return 0;
 	}
 	string algoritmo = argv[1];
+
+	// ORDEN DE ARGUMENTOS PARA TABU: T MEMORIA, PORCENTAJE VECINDAD, ITERACIONES
+	if(argc > 2 && argc <= 5){ // Si no pasan argumentos se usa lo ya definido
+		// atoi convierte el numero string a int, osea "20" --> 20. Literalmente el numero
+		if(argc != 5){
+			cerr << "CAPO PASA TODOS LOS ARGUMENTOS NO VES QUE SINO EXPLOTA" << endl;
+			return 0;
+		}
+		t = atoi(argv[2]);
+		SUBVECINDAD_PORCENTAJE = atoi(argv[3]);
+		ITERACIONES_TABU = atoi(argv[4]);
+	}
 
     // Leemos el input.
     int v, w, peso_arista;
