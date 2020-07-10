@@ -255,8 +255,7 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 
 
 vector<int> tabuSearch(int &l){
-    MB = true;
-	vector<int> ciclo = insercion(l);
+	vector<int> ciclo = golosoArista(matriz_adyacencia, l);
 	int n = ciclo.size(); // Asumo que viene el ciclo con los n vertices.
 
 	for(int i = 0; i < n; i++)ciclo[i]--;
