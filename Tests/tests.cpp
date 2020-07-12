@@ -14,7 +14,13 @@ vector<int> test_AGM_1(int& peso){
     g[2][3] = 30;
     vector<arista> test_sort = sort_aristas(g);
     vector<arista> test_kruskal = kruskal(g);
-    vector<int> test_dfs = dfs(test_kruskal);
+    vector<vector<int>> arbol_t(g.size());
+    for(int i = 0; i<test_kruskal.size();i++){
+        arista e = test_kruskal[i];
+        arbol_t[e.inicio].push_back(e.fin);
+        arbol_t[e.fin].push_back(e.inicio);
+    }
+    vector<int> test_dfs = dfs_mejor(arbol_t);
     peso = 0;
     vector<int> test_agm = heurAG(g,peso);
     return test_agm;

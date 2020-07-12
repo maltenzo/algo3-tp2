@@ -13,7 +13,8 @@ void merge_sort(vector<arista>& v,int v_1, int v_2){ //v es el vector, v_1 indic
 		int i = v_1;
 		int j = split;
         vector<arista> nuevo = v;
-		while(i < split && j < v_2){
+
+		while(i < split && j < v_2){ //añado la arista más ligera de entre ambas partes del vector a nuevo
 			if( v[i].peso < v[j].peso){
 				nuevo[i+j-split] = v[i];
 				i++;
@@ -23,12 +24,12 @@ void merge_sort(vector<arista>& v,int v_1, int v_2){ //v es el vector, v_1 indic
 			}
 		}
 
-		while(i < split){
+		while(i < split){ //agrego las aristas que quedan de la primera parte de v
 			nuevo[i+j-split] = v[i];
 			i++;
 		}
 
-		while(j < v_2){
+		while(j < v_2){//agrego las aristas restantes de la segunda parte de v
 			nuevo[i+j-split] = v[j];
 			j++;
 		}
@@ -125,36 +126,4 @@ vector<int> heurAG(grafo g, int& p){
 	}
 
 	return orden;
-}
-
-//parte recursia de DFS
-void dfs_recu(vector<arista> t, vector<int>& orden, int padre, int& nro_orden, vector<int>& visitados){ //orden es la lista del orden de los vértices, padre es el vertice padre
-    for(int i = 0; i<t.size() && nro_orden<orden.size(); i++){ //en cada recursion, reviso todas las aristas para buscar una con el padre
-        arista e = t[i];
-        if(e.inicio == padre && !visitados[e.fin]){                                  //si encuentro una
-            orden[nro_orden] = e.fin;                           //agrego el otro vértice al orden
-            nro_orden++;
-            visitados[e.fin] = 1;
-            dfs_recu(t,orden,e.fin,nro_orden,visitados);           //sigo la rama por ese vértice
-        }else if(e.fin == padre &&  !visitados[e.inicio]){
-            orden[nro_orden] = e.inicio;
-            nro_orden++;
-            visitados[e.inicio] = 1;
-            dfs_recu(t,orden,e.inicio,nro_orden,visitados);
-        }
-    }
-    return;
-
-}
-
-vector<int> dfs(vector<arista> t){
-    int padre = 0;                              //padre es el vértice que vemos
-    int nro_orden = 0;                          //número de ordenq del vértice que estamos buscando en el momento
-    vector<int> orden(t.size()+1,-1);  //creo la lista de vértices en orden de recorrido
-    orden[nro_orden] = padre;                   //el primero siempre es el vértice 1 (representado como 0 para usar de indice)
-    nro_orden++;
-    vector<int> visitados(t.size()+1, 0); //lista de vértices que me dice si estásn considerados o no en el orden
-    visitados[padre] = 1;
-    dfs_recu(t,orden,padre,nro_orden,visitados);   //llamo a la recursiva
-    return orden;
 }
