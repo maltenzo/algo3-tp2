@@ -40,7 +40,7 @@ bool hayCircuito(vector<vector<int>> aristasElegidas,vector<int> e){
             } else {
                 actual = (*it)[1];
                 it = listaAristas.erase(it);
-                it = listaAristas.begin();
+                it = listaAristas.begin(); //vuelvo a recorrer sin esa arista
             }
 
         } else if ((*it)[1] == actual){
