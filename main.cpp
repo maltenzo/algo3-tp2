@@ -31,8 +31,8 @@ unsigned int ITERACIONES_TABU = 300;
 int main(int argc, char** argv)
 {
 	// Leemos el parametro que indica el algoritmo a ejecutar.
-	map<string, string> algoritmos_implementados = {{"ins", "insercion"},{"agm", "heurAGM"},{"T_AGM","Tests AGM"},
-                                                 {"T_AGM_2", "otro Test AGM"}, {"TABU_CICLOS", "Tabú con memoria de ciclos"}, {"GA", "golosoArista"},
+	map<string, string> algoritmos_implementados = {{"INS", "insercion"},{"AGM", "heurAGM"},
+                                                 {"TABU_CICLOS", "Tabú con memoria de ciclos"}, {"GA", "golosoArista"},
                                                     {"TABU_ESTRUCTURA","Tabú con memoria de estructura"}}; // Las tuplas (Siglas del algoritmo, Nombre completo)
 
 	// Verificar que el algoritmo pedido exista.
@@ -76,25 +76,16 @@ int main(int argc, char** argv)
 
 	int optimum = INFTY;
 	auto start = chrono::steady_clock::now();
-	 if (algoritmo == "ins")
+	 if (algoritmo == "INS")
 	{
 		MB = true;
 		circuito = insercion(peso_circuito);
 
-	}else if(algoritmo == "agm"){
+	}else if(algoritmo == "AGM"){
 
 	     circuito = heurAG(matriz_adyacencia, peso_circuito);
 
-	 }else if(algoritmo == "T_AGM"){
-
-	     circuito = test_AGM_1(peso_circuito);
-
-	 }else if(algoritmo == "T_AGM_2"){
-
-         circuito = test_AGM_2(peso_circuito);
-
-	 }
-	 else if(algoritmo == "TABU_CICLOS"){
+	 }else if(algoritmo == "TABU_CICLOS"){
 	 	memoria_ciclos = true;
 	 	memoria_estructura = false;
 	 	circuito = tabuSearch(peso_circuito);
@@ -108,7 +99,7 @@ int main(int argc, char** argv)
 
 	     circuito = golosoArista(matriz_adyacencia, peso_circuito);
 
-	 }// else if (algoritmo =="")..
+	 }
 
 
 	auto end = chrono::steady_clock::now();

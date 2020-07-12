@@ -36,7 +36,7 @@ int elegir(vector<bool> usados){
         e = mas_lejana(usados);
     }
     return e;
-
+//Finalmente no usamos las opciones de mas cercana ni mas barata, asi que no estan testadas. Solo utilizamos la opcion de mas barata
 }
 
 int mas_cercana(vector<bool> usados){
