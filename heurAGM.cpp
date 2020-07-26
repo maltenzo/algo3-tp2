@@ -107,16 +107,25 @@ vector<int> dfs_mejor(vector<vector<int>> t){
 }
 
 vector<int> heurAG(grafo g, int& p){
+	auto kruskal_i = chrono::steady_clock::now();
 	vector<arista> t = kruskal(g);          //Hago el arbol, representado como una lista de adyacencia
-
+	auto kruskal_f = chrono::steady_clock::now();
+	double total_time = chrono::duration<double, milli>(kruskal_f - kruskal_i).count();
+	cout << "kruskal:" << total_time << endl; 
+	
 	vector<vector<int>> arbol_t(g.size());
+	
 	for(int i = 0; i<t.size();i++){
 	    arista e = t[i];
 	    arbol_t[e.inicio].push_back(e.fin);
 	    arbol_t[e.fin].push_back(e.inicio);
 	}
-
+	auto dfs_i = chrono::steady_clock::now();
 	vector<int> orden = dfs_mejor(arbol_t);             //Recorro por dfs, para saber los ordenes
+	auto dfs_f = chrono::steady_clock::now();
+	total_time = chrono::duration<double, milli>(dfs_f - dfs_i).count();
+	cout << "dfs:" << total_time << endl; 
+	
 	p = 0;                                  //seteo el peso en 0
     p += g[orden[0]][orden[orden.size()-1]]; //añado la arsita que completa el circuito
     orden[0] = 1;                           //cambio el vertice a convención 1,n
