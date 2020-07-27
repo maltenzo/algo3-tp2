@@ -1,7 +1,11 @@
 #include "funciones.h"
 #include "unir_find.hpp"
+#include <algorithm>
 
 
+bool mayorQueAGM(arista aristaA, arista aristaB){
+    return aristaA.peso < aristaB.peso;
+}
 //merge sort basado en el peso de la aristas
 void merge_sort(vector<arista>& v,int v_1, int v_2){ //v es el vector, v_1 indice inclusive bajo, v_2 indice exclusivo alto
 	if(v_1 + 1 == v_2){
@@ -49,7 +53,8 @@ vector<arista> sort_aristas(grafo g){ //ordeno las aristas por peso
 			k++;
 		}
 	}
-	merge_sort(res,0,res.size()); //luego uso merge
+	//merge_sort(res,0,res.size()); //luego uso merge
+    std::sort(res.begin(), res.end(), &mayorQueAGM);
 	return res;
 }
 
