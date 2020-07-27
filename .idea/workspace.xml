@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="tp2_github" targetName="tp2_github" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b376d96-48bd-42af-87cf-ff98106ff9ec" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1fH0FfopToof30WyP4nLz4zB8OW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager">
+    <configuration name="tp2_github" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="INS" REDIRECT_INPUT="true" REDIRECT_INPUT_PATH="$PROJECT_DIR$/Python/instancias/descargas/data/burma14.tsp" PASS_PARENT_ENVS_2="true" PROJECT_NAME="tp2_github" TARGET_NAME="tp2_github" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="tp2_github" RUN_TARGET_NAME="tp2_github">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b376d96-48bd-42af-87cf-ff98106ff9ec" name="Default Changelist" comment="" />
+      <created>1595859610530</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595859610530</updated>
+      <workItem from="1595859616279" duration="376000" />
+      <workItem from="1595860011089" duration="7000" />
+      <workItem from="1595860037007" duration="59000" />
+      <workItem from="1595860250315" duration="212000" />
+      <workItem from="1595860529616" duration="44000" />
+      <workItem from="1595860823839" duration="212000" />
+      <workItem from="1595865208173" duration="4539000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="836" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595865231249">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="836" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1595865231249" />
+    <state x="1161" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1595865228428">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="1161" y="310" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1595865228427" />
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1595875248596">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1595875248596" />
+    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1595875248595">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="278" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1595875248595" />
+    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1595875248594">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="278" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1595875248594" />
+    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1595875248595">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="278" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1595875248595" />
+  </component>
+</project>
