@@ -12,7 +12,7 @@
 
 using namespace std;
 
-int INFTY = 10e8; // Valor para indicar que no hubo solución.
+int INFTY = INT32_MAX; // Valor para indicar que no hubo solución.
 bool MC = false;
 bool MB = false;
 int n, m; // # nodos, # aristas
