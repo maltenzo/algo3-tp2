@@ -6,7 +6,7 @@ int anterior_MB = 0;
 int posterior_MB =0;
 
 
-int infinito = 10e6; // Valor grande para uasr de cota
+int infinito = 10e8; // Valor grande para uasr de cota
 vector<int> insercion(int& l){
     vector<bool> usados(matriz_adyacencia.size(), false);
     usados[0] = true;
