@@ -1,7 +1,15 @@
 #include "funciones.h"
 #include <list>
 #include <algorithm>
-
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cstdio>
+#include <cstdlib>
+#include <chrono>
+#include <set>
+#include <map>
+#include <string>
 using namespace std;
 
 bool mayorQue(vector<int> aristaA, vector<int> aristaB){
@@ -145,5 +153,6 @@ vector<int> golosoArista(vector<vector<int>>& X, int& peso_circ){
         actualizarEstados(e, estadoVertices, aristasRestantes);
         aristasH.push_back(e);
     }
+
     return armarCircuito(aristasH, peso_circ);
 }

@@ -12,13 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b376d96-48bd-42af-87cf-ff98106ff9ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/algo3-tp2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2opt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/2opt.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GolosoAristas.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GolosoAristas.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +49,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager" selected="CMake Application.algo3_tp2">
-    <configuration name="algo3_tp2" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="TABU_ESTRUCTURA" REDIRECT_INPUT="true" REDIRECT_INPUT_PATH="$PROJECT_DIR$/Python/instancias/descargas/data/a280.tsp" PASS_PARENT_ENVS_2="true" PROJECT_NAME="algo3_tp2" TARGET_NAME="algo3_tp2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="algo3_tp2" RUN_TARGET_NAME="algo3_tp2">
+    <configuration name="algo3_tp2" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="AGM" REDIRECT_INPUT="true" REDIRECT_INPUT_PATH="$PROJECT_DIR$/Python/instancias/descargas/data/eil51.tsp" PASS_PARENT_ENVS_2="true" PROJECT_NAME="algo3_tp2" TARGET_NAME="algo3_tp2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="algo3_tp2" RUN_TARGET_NAME="algo3_tp2">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -88,7 +84,7 @@
       <workItem from="1595885552112" duration="85000" />
       <workItem from="1595885696227" duration="96000" />
       <workItem from="1595886116073" duration="1054000" />
-      <workItem from="1595941204554" duration="12140000" />
+      <workItem from="1595941204554" duration="17499000" />
     </task>
     <servers />
   </component>
@@ -96,30 +92,30 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="759" y="206" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595963300456">
+    <state x="37" y="45" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595969562621">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="759" y="206" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1595963300456" />
-    <state x="1161" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1595948209045">
+    <state x="37" y="45" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1595969562621" />
+    <state x="574" y="291" width="424" height="484" key="FileChooserDialogImpl" timestamp="1595969505197">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="1161" y="310" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1595948209045" />
-    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1595963709225">
+    <state x="574" y="291" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1595969505197" />
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1595969554237">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1595963709225" />
-    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1595963709224">
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1595969554237" />
+    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1595969554237">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1595963709224" />
-    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1595963709223">
+    <state width="1874" height="278" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1595969554237" />
+    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1595969554236">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1595963709223" />
-    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1595963709225">
+    <state width="1874" height="278" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1595969554236" />
+    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1595969554237">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1595963709225" />
+    <state width="1874" height="278" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1595969554237" />
     <state width="1874" height="344" key="GridCell.Tab.1.bottom" timestamp="1595947365098">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

@@ -12,11 +12,7 @@
 #include <list>
 using namespace std;
 
-
 int idx_memoria = 0;
-
-
-
 
 vector<arista> porcentaje_random(vector<arista> &vecinos, int cantidad){
 	int random;
@@ -242,11 +238,11 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 			}
 		}
 
-		mejor = swap(ciclo, i, j);
-		costoCiclo = costo_mejor;
+    mejor = swap(ciclo, i, j);
 
-		return mejor;
+    costoCiclo = costo_mejor;
 
+    return mejor;
 }
 
 
@@ -254,7 +250,7 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 vector<int> tabuSearch(int &l){
 
 	vector<int> ciclo = heurAG(matriz_adyacencia, l);
-    cout << "l es esto pre tabu: " << l << endl;
+
 	int n = ciclo.size(); // Asumo que viene el ciclo con los n vertices.
 
 	for(int i = 0; i < n; i++)ciclo[i]--;
@@ -307,5 +303,5 @@ vector<int> tabuSearch(int &l){
 	    mejorCiclo[i]++;
 	}
 
-	return mejorCiclo;
+    return mejorCiclo;
 }

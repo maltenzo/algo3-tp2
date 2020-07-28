@@ -12,7 +12,7 @@
 
 using namespace std;
 
-int INFTY = 10e6; // Valor para indicar que no hubo solución.
+int INFTY = 10e8; // Valor para indicar que no hubo solución.
 bool MC = false;
 bool MB = false;
 int n, m; // # nodos, # aristas
@@ -21,8 +21,8 @@ bool memoria_ciclos = false;
 bool memoria_estructura = false;
 
 // Tabu variables
-unsigned int t = 100;
-int SUBVECINDAD_PORCENTAJE = 20; // Con que porcentaje de la vecindad nos quedamos
+unsigned int t = 200;
+int SUBVECINDAD_PORCENTAJE = 10; // Con que porcentaje de la vecindad nos quedamos
 unsigned int ITERACIONES_TABU = 100;
 
 
@@ -95,12 +95,10 @@ int main(int argc, char** argv)
 	 	memoria_ciclos = false;
 		circuito = tabuSearch(peso_circuito);
 
-	 }else if(algoritmo == "GA"){
+	 }else if(algoritmo == "GA") {
 
-	     circuito = golosoArista(matriz_adyacencia, peso_circuito);
-
-	 }
-
+         circuito = golosoArista(matriz_adyacencia, peso_circuito);
+     }
 
 	auto end = chrono::steady_clock::now();
 	double total_time = chrono::duration<double, milli>(end - start).count();
