@@ -9,11 +9,13 @@
 #include <map>
 #include <time.h>
 #include "funciones.h"
-
+#include <list>
 using namespace std;
 
 
 int idx_memoria = 0;
+
+
 
 
 vector<arista> porcentaje_random(vector<arista> &vecinos, int cantidad){
@@ -22,14 +24,11 @@ vector<arista> porcentaje_random(vector<arista> &vecinos, int cantidad){
     if(cantidad == 0){
         cantidad = 1;
     }
-	while(cantidad--){
-		srand(time(NULL));
-		random = rand() % vecinos.size();
-		res.push_back(vecinos[random]);
+    std::random_shuffle(vecinos.begin(), vecinos.end());
+    for(int i = 0; i < cantidad; i++){
+        res.push_back(vecinos[i]);
+    }
 
-		vecinos.erase(vecinos.begin()+random);
-
-	}
 	return res;
 }
 
@@ -75,7 +74,7 @@ vector<int> swap(vector<int> c, int i, int j){
 vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el ciclo generado por AGM o alguna otra heuristica
 	// l es el costo del circuito que me pasan
 	// Pre, el ciclo es de longitud n = matriz_adyacencia.size()
-
+    auto clock_begin = chrono::steady_clock::now();
 	int n = ciclo.size();
 	vector<arista> subvecindad; // Vamos a retornar los vecinos como:
 	// (vi,vj, costo del ciclo al swappear las aristas incidentes a estos)
@@ -120,11 +119,13 @@ vector<arista> localSearch2opt(vector<int> ciclo, const int l){ // recibe el cic
     //subvecindad = porcentaje_random(subvecindad, cantidad );
 
 	subvecindad = porcentaje_random(subvecindad, (cantidad*SUBVECINDAD_PORCENTAJE)/100 );
+
+
 	return subvecindad;
 }
 
 vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &costoCiclo,
- vector<vector<int>> &ultimosCiclos, vector<arista> &ultimosSwaps){
+ vector<vector<int>> &ultimosCiclos, vector<arista> &ultimosSwaps,int& l){
 
 
 	//std::sort(subvecindad.begin(), subvecindad.end(), mejorCostoVecinos); // mejorCostoVecinos funcion de comparacion
@@ -151,15 +152,17 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 
 
 				vecino = swap(ciclo, elegida.inicio, elegida.fin);
-				if(find(ultimosCiclos.begin(), ultimosCiclos.end(), vecino) != ultimosCiclos.end()) break;
+				if(find(ultimosCiclos.begin(), ultimosCiclos.end(), vecino) != ultimosCiclos.end());
 				// si el vecino esta sigo esta en los explorados, sigo con el siguiente
 
-				if(elegida.peso < costo_mejor){
-					mejor = vecino;
-					costo_mejor = elegida.peso;
-					i = elegida.inicio;
-					j = elegida.fin;
-				}
+				else {
+                    if(elegida.peso < costo_mejor){
+                        mejor = vecino;
+                        costo_mejor = elegida.peso;
+                        i = elegida.inicio;
+                        j = elegida.fin;
+                    }
+                }
 			}
 			else if(memoria_estructura){
 				// descarto por tabu y su costo
@@ -176,19 +179,24 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 				// en memoria las tengo efectivamente como (vi, vj, peso((vi,vj)))
 				// ahora la busco en memoria
 
-				if(find(ultimosSwaps.begin(), ultimosSwaps.end(), elegida) != ultimosSwaps.end()) break;
+                arista inversa(elegida.fin, elegida.inicio, elegida.peso);
+				if((find(ultimosSwaps.begin(), ultimosSwaps.end(), elegida) != ultimosSwaps.end()) ||
+				(find(ultimosSwaps.begin(), ultimosSwaps.end(), inversa) != ultimosSwaps.end())) {
+                    if (costoTrasSwap < l) {
+                        mejor_arista = elegida;
+                        costo_mejor = costoTrasSwap;
+                        i = indice_i;
+                        j = indice_j;
+                    }
+                } else {
 
-				arista inversa(elegida.fin, elegida.inicio, elegida.peso);
-				if(find(ultimosSwaps.begin(), ultimosSwaps.end(), inversa) != ultimosSwaps.end()) break;
-
-				if(costoTrasSwap < costo_mejor){
-					mejor_arista = elegida;
-					costo_mejor = costoTrasSwap;
-					i = indice_i;
-					j = indice_j;
-				}
-
-
+                    if (costoTrasSwap < costo_mejor) {
+                        mejor_arista = elegida;
+                        costo_mejor = costoTrasSwap;
+                        i = indice_i;
+                        j = indice_j;
+                    }
+                }
 			}
 		}
 		// Recordar en memoria: o ciclos, o swaps
@@ -244,7 +252,9 @@ vector<int> obtenerMejor(vector<arista> &subvecindad, vector<int> ciclo, int &co
 
 
 vector<int> tabuSearch(int &l){
-	vector<int> ciclo = golosoArista(matriz_adyacencia, l);
+
+	vector<int> ciclo = heurAG(matriz_adyacencia, l);
+    cout << "l es esto pre tabu: " << l << endl;
 	int n = ciclo.size(); // Asumo que viene el ciclo con los n vertices.
 
 	for(int i = 0; i < n; i++)ciclo[i]--;
@@ -272,7 +282,8 @@ vector<int> tabuSearch(int &l){
 		vector<arista> subVecindad = localSearch2opt(ciclo, costoCiclo);
 		// Matriz con los swaps y el costo al hacerlo (vi, vj, costo)
 
-		ciclo = obtenerMejor(subVecindad, ciclo, costoCiclo, memoriaCiclos, memoriaEstructura); // en esta funcion se reconstruye el ciclo
+
+		ciclo = obtenerMejor(subVecindad, ciclo, costoCiclo, memoriaCiclos, memoriaEstructura, l); // en esta funcion se reconstruye el ciclo
 		// Preciso pasarle el ciclo de esta iteracion para poder construirlo a partir de los swaps
 
 		// Costo ciclo guarda el costo del ciclo elegido
@@ -280,6 +291,8 @@ vector<int> tabuSearch(int &l){
 		// Funcion de aspiracion??
 
 		// me quedo con el mejor
+
+
 		if(costoCiclo < l){
 			mejorCiclo = ciclo;
 			l = costoCiclo;
@@ -287,6 +300,7 @@ vector<int> tabuSearch(int &l){
 		}
 
 		ITERACIONES_TABU--;
+
 	}
 
 	for(int i=0; i<mejorCiclo.size(); i++){

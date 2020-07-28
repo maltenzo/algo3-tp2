@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="tp2_github" targetName="tp2_github" />
+      <config projectName="algo3_tp2" targetName="algo3_tp2" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -11,7 +11,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b376d96-48bd-42af-87cf-ff98106ff9ec" name="Default Changelist" comment="" />
+    <list default="true" id="7b376d96-48bd-42af-87cf-ff98106ff9ec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/algo3-tp2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2opt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/2opt.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +34,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1fH0FfopToof30WyP4nLz4zB8OW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../nuevoProj" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -42,12 +52,21 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager">
-    <configuration name="tp2_github" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="INS" REDIRECT_INPUT="true" REDIRECT_INPUT_PATH="$PROJECT_DIR$/Python/instancias/descargas/data/burma14.tsp" PASS_PARENT_ENVS_2="true" PROJECT_NAME="tp2_github" TARGET_NAME="tp2_github" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="tp2_github" RUN_TARGET_NAME="tp2_github">
+  <component name="RunManager" selected="CMake Application.algo3_tp2">
+    <configuration name="algo3_tp2" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="TABU_ESTRUCTURA" REDIRECT_INPUT="true" REDIRECT_INPUT_PATH="$PROJECT_DIR$/Python/instancias/descargas/data/a280.tsp" PASS_PARENT_ENVS_2="true" PROJECT_NAME="algo3_tp2" TARGET_NAME="algo3_tp2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="algo3_tp2" RUN_TARGET_NAME="algo3_tp2">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="tp2_github" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="INS" REDIRECT_INPUT="true" REDIRECT_INPUT_PATH="$PROJECT_DIR$/Python/instancias/descargas/data/burma14.tsp" PASS_PARENT_ENVS_2="true" PROJECT_NAME="algo3_tp2" TARGET_NAME="tp2_github" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="algo3_tp2" RUN_TARGET_NAME="tp2_github">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.tp2_github" />
+      <item itemvalue="CMake Application.algo3_tp2" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -66,6 +85,10 @@
       <workItem from="1595860529616" duration="44000" />
       <workItem from="1595860823839" duration="212000" />
       <workItem from="1595865208173" duration="4539000" />
+      <workItem from="1595885552112" duration="85000" />
+      <workItem from="1595885696227" duration="96000" />
+      <workItem from="1595886116073" duration="1054000" />
+      <workItem from="1595941204554" duration="12140000" />
     </task>
     <servers />
   </component>
@@ -73,29 +96,45 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="836" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595865231249">
+    <state x="759" y="206" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595963300456">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="836" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1595865231249" />
-    <state x="1161" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1595865228428">
+    <state x="759" y="206" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1595963300456" />
+    <state x="1161" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1595948209045">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="1161" y="310" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1595865228427" />
-    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1595875248596">
+    <state x="1161" y="310" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1595948209045" />
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1595963709225">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1595875248596" />
-    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1595875248595">
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1595963709225" />
+    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1595963709224">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1595875248595" />
-    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1595875248594">
+    <state width="1874" height="278" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1595963709224" />
+    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1595963709223">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1595875248594" />
-    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1595875248595">
+    <state width="1874" height="278" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1595963709223" />
+    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1595963709225">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1595875248595" />
+    <state width="1874" height="278" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1595963709225" />
+    <state width="1874" height="344" key="GridCell.Tab.1.bottom" timestamp="1595947365098">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1595947365098" />
+    <state width="1874" height="344" key="GridCell.Tab.1.center" timestamp="1595947365097">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1595947365097" />
+    <state width="1874" height="344" key="GridCell.Tab.1.left" timestamp="1595947365097">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1595947365097" />
+    <state width="1874" height="344" key="GridCell.Tab.1.right" timestamp="1595947365097">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1595947365097" />
   </component>
 </project>
