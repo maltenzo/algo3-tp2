@@ -21,9 +21,9 @@ bool memoria_ciclos = false;
 bool memoria_estructura = false;
 
 // Tabu variables
-unsigned int t = 200;
-int SUBVECINDAD_PORCENTAJE = 10; // Con que porcentaje de la vecindad nos quedamos
-unsigned int ITERACIONES_TABU = 100;
+unsigned int t = 160;
+int SUBVECINDAD_PORCENTAJE = 70; // Con que porcentaje de la vecindad nos quedamos
+unsigned int ITERACIONES_TABU = 500;
 
 
 // Si tenemos las heuristicas en archivos separados, incluirlos
