@@ -13,6 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7b376d96-48bd-42af-87cf-ff98106ff9ec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2opt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/2opt.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TSP" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +59,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.tp2_github" />
       <item itemvalue="CMake Application.algo3_tp2" />
+      <item itemvalue="CMake Application.tp2_github" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -84,6 +86,7 @@
       <workItem from="1595941204554" duration="17858000" />
       <workItem from="1595970354388" duration="1522000" />
       <workItem from="1596033293037" duration="1149000" />
+      <workItem from="1596145970490" duration="696000" />
     </task>
     <servers />
   </component>
